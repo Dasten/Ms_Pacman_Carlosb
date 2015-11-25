@@ -473,7 +473,7 @@ public class Executor
 			}
 
 
-			recompensa = 0;
+			//recompensa = 0;   // TEST GIT
 			estado = learner.getState(game);
 			accion = learner.getAccion(estado);
 			recompensa = estado.getRecompensa();
