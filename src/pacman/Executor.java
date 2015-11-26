@@ -95,8 +95,9 @@ public class Executor
 		//exec.runGameTimed(new DataCollectorController(new KeyBoardInput()), new AggressiveGhosts(), visual);
 
 		// Ejecutamos el juego con el controlador de QLearning y con las repeticiones que configuramos
-		int repeticiones = 5;
-		exec.runQLearner(new DataCollectorController(new KeyBoardInput()), new QController(), repeticiones);
+		int repeticiones = 1000;
+		exec.runQLearner(new StarterPacMan(), new QController(), repeticiones);
+
 	}
 	
     /**
@@ -456,9 +457,24 @@ public class Executor
 				siguienteMovimiento = accion.getMovimientoFromAccion(game);
 				recompensa = estado.getRecompensa();
 
+
 				if(lastEstado != null){
+
+					//System.out.println("Estado actual: " + estado.getNombreEstado());
+					//System.out.println("Estado anterior: " + lastEstado.getNombreEstado());
+
+					/*
+					if(accion.getNombreAccion() != "ATACAR" || lastAccion.getNombreAccion() != "ATACAR")
+					{
+						System.out.println("Accion actual: " + accion.getNombreAccion());
+						System.out.println("Accion anterior: " + lastAccion.getNombreAccion());
+					}
+					*/
+
+
 					learner.update(lastEstado, lastAccion, recompensa, estado);
 				}
+
 
 
 
@@ -477,6 +493,7 @@ public class Executor
 			estado = learner.getState(game);
 			accion = learner.getAccion(estado);
 			recompensa = estado.getRecompensa();
+			//System.out.println("ULTIMA RECOM: " + recompensa);
 			learner.update(lastEstado, lastAccion, recompensa, estado);
 
 

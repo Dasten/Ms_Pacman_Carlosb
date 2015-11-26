@@ -1,5 +1,7 @@
 package pacman.controllers.QLearning;
 
+import java.util.Random;
+
 public class QTabla {
 
     private static final float alpha = 0.3f;
@@ -40,6 +42,12 @@ public class QTabla {
 
     public Accion getMejorAccion(Estado e) {
 
+        Random rand = new Random();
+
+        Accion mejor = Accion.getAccionById(rand.nextInt((2 - 0) + 1) + 0);
+
+
+        /*
         Accion mejor = null;
         float maximo = 0.0f;
 
@@ -52,6 +60,7 @@ public class QTabla {
                 maximo = qvalores[e.getIdEstado()][i];
             }
         }
+        */
         return mejor;
     }
 
