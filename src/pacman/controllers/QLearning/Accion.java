@@ -3,6 +3,8 @@ package pacman.controllers.QLearning;
 import static pacman.game.Constants.*;
 import pacman.game.Game;
 
+import java.util.ArrayList;
+
 public class Accion {
 
     public static final Accion ATACAR = new Accion("ATACAR", 0);
@@ -30,6 +32,14 @@ public class Accion {
 
     public static Accion getAccionById(int idAccion){
         return Acciones[idAccion];
+    }
+
+    public static ArrayList<Accion> getActionList(){
+        ArrayList<Accion> listaAcciones = new ArrayList<Accion>();
+        for(int i = 0; i < 3; i++){
+            listaAcciones.add(getAccionById(i));
+        }
+        return listaAcciones;
     }
 
     public String toString(){

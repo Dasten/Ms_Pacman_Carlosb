@@ -27,7 +27,7 @@ public class QLearner {
     }
 
     public Accion getAccion(Estado e){
-        return qvalores.getMejorAccion(e);
+        return qvalores.getAccion(e);
     }
 
     public void update(Estado e, Accion a, float recompensa, Estado ePrima){

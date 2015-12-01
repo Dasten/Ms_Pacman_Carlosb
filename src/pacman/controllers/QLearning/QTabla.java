@@ -1,5 +1,6 @@
 package pacman.controllers.QLearning;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class QTabla {
@@ -34,7 +35,7 @@ public class QTabla {
         int estado = e.getIdEstado();
         int accion = a.getIdAccion();
 
-        int mejorAccion = getMejorAccion(ePrima).getIdAccion();
+        int mejorAccion = getAccion(ePrima).getIdAccion();
         qvalores[estado][accion] = (1 - alpha) * qvalores[estado][accion] + alpha * (recompensa + gamma * qvalores[ePrima.getIdEstado()][mejorAccion]);
 
         return qvalores[estado][accion];
@@ -45,9 +46,17 @@ public class QTabla {
 
         float epsilon = 0.3f;
         Random rand = new Random();
-        Accion mejor;
+        Accion mejor = mejor = getMejorAccion(e);
         int probabilidadObtenida = (rand.nextInt((100-0)+1) + 0);
+        ArrayList<Accion> listaAcciones = Accion.getActionList();
 
+        if((probabilidadObtenida / 100.0f) <= epsilon) {
+            listaAcciones.remove(mejor);
+            int random = rand.nextInt(((listaAcciones.size() - 1) - 0) + 1);
+            mejor = listaAcciones.get(random);
+        }
+
+        //System.out.println("Prob obtenida random: " + (probabilidadObtenida / 100.0f) + " Accion final: " + mejor.getNombreAccion());
 
         // Seleccion de accion aleatoria
         //Accion mejor = Accion.getAccionById(rand.nextInt((2 - 0) + 1) + 0);
