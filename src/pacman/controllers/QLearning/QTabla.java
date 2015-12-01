@@ -40,14 +40,31 @@ public class QTabla {
         return qvalores[estado][accion];
     }
 
-    public Accion getMejorAccion(Estado e) {
 
+    public Accion getAccion(Estado e) {
+
+        float epsilon = 0.3f;
         Random rand = new Random();
+        Accion mejor;
+        int probabilidadObtenida = (rand.nextInt((100-0)+1) + 0);
 
-        Accion mejor = Accion.getAccionById(rand.nextInt((2 - 0) + 1) + 0);
+
+        // Seleccion de accion aleatoria
+        //Accion mejor = Accion.getAccionById(rand.nextInt((2 - 0) + 1) + 0);
 
 
-        /*
+
+        // Si la prob esta entre epsilon -> coger mejor accion
+        // si no esta, hacer un random entre las demas acciones
+
+
+        return mejor;
+    }
+
+
+
+    private Accion getMejorAccion(Estado e) {
+
         Accion mejor = null;
         float maximo = 0.0f;
 
@@ -60,7 +77,7 @@ public class QTabla {
                 maximo = qvalores[e.getIdEstado()][i];
             }
         }
-        */
+
         return mejor;
     }
 
