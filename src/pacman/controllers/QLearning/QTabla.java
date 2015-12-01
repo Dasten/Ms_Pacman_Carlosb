@@ -87,8 +87,8 @@ public class QTabla {
 
     // To string de la tabla para imprimirla por pantalla
     public String toString(){
-
         String resultado = "################  - QVALORES -  ################\n";
+        resultado += "   " + Accion.ATACAR.getNombreAccion() + " " + Accion.NEUTRO.getNombreAccion() + " " + Accion.HUIR.getNombreAccion() + "\n";
         for(int estado = 0; estado < qvalores.length; estado++){
             resultado += listaEstados[estado];
             for(int accion = 0; accion < qvalores[0].length; accion++){
@@ -96,6 +96,7 @@ public class QTabla {
             }
             resultado += "\n";
         }
+        resultado += "   " + Accion.ATACAR.getNombreAccion() + " " + Accion.NEUTRO.getNombreAccion() + " " + Accion.HUIR.getNombreAccion() + "\n";
         return resultado;
     }
 

@@ -181,7 +181,7 @@ public class DataTuple {
 		stringbuilder.append(this.numberOfTotalPillsInLevel + ";");
 		stringbuilder.append(this.numberOfTotalPowerPillsInLevel + ";");
 
-		//System.out.println("PWP Left: " +  this.numOfPowerPillsLeft);
+		System.out.println("Tiempo: " +  this.blinkyEdibleTime + "   Distancia: " + blinkyDist);
 		//System.out.println("Pos Pacman: " + pacmanPosition + "   Node Blinky: " + nodeBlinky);
 
 		return stringbuilder.toString();
