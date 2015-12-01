@@ -40,8 +40,6 @@ public class Estado {
             return 0;
         }
 
-
-
     }
 
     public boolean equals(Object e){
@@ -62,16 +60,10 @@ public class Estado {
         int t = game.getGhostEdibleTime(Constants.GHOST.SUE);
         int pp = game.getNumberOfActivePowerPills();
 
-
-
-        //System.out.println("Vidas pacman: " + game.getPacmanNumberOfLivesRemaining());
-
         // Si Pacman ha muerto (vidas = 0) devolvemos el estado XXX, sino creamos el String con el nombre del estado.
-        //if(game.getPacmanNumberOfLivesRemaining() == 0)
         if(game.gameOver())
         {
             resultado = "XXX";
-            //System.out.println("PACMAN HA MUERTO!!");
         }else{
 
             if (d <= 50) {

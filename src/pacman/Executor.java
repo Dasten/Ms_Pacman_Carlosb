@@ -408,15 +408,9 @@ public class Executor
 	}
 
 
-
-
-
-
 	public void runQLearner(Controller<MOVE> pacManController, Controller<EnumMap<GHOST,MOVE>> ghostController, int iteraciones)
 	{
-		System.out.println("Estamos en el exec correcto");
-
-		long millis = System.currentTimeMillis() % 1000;
+		long start_time = System.nanoTime();
 
 		QLearner learner = new QLearner();
 		learner.initialize();
@@ -438,17 +432,6 @@ public class Executor
 			lastEstado = null;
 			lastAccion = null;
 
-
-
-
-
-
-
-			// Le pasamos el QLearner que vamos a usar en todas las ejecuciones
-			//((QController)ghostController).setQLearner(learner);
-
-
-
 			while(!game.gameOver())
 			{
 				recompensa = 0;
@@ -457,26 +440,9 @@ public class Executor
 				siguienteMovimiento = accion.getMovimientoFromAccion(game);
 				recompensa = estado.getRecompensa();
 
-
 				if(lastEstado != null){
-
-					//System.out.println("Estado actual: " + estado.getNombreEstado());
-					//System.out.println("Estado anterior: " + lastEstado.getNombreEstado());
-
-					/*
-					if(accion.getNombreAccion() != "ATACAR" || lastAccion.getNombreAccion() != "ATACAR")
-					{
-						System.out.println("Accion actual: " + accion.getNombreAccion());
-						System.out.println("Accion anterior: " + lastAccion.getNombreAccion());
-					}
-					*/
-
-
 					learner.update(lastEstado, lastAccion, recompensa, estado);
 				}
-
-
-
 
 				lastEstado = estado;
 				lastAccion = accion;
@@ -488,28 +454,17 @@ public class Executor
 						ghostController.getMove(game.copy(),System.currentTimeMillis()+DELAY));
 			}
 
-
-			//recompensa = 0;   // TEST GIT
 			estado = learner.getState(game);
-			accion = learner.getAccion(estado);
 			recompensa = estado.getRecompensa();
-			//System.out.println("ULTIMA RECOM: " + recompensa);
 			learner.update(lastEstado, lastAccion, recompensa, estado);
-
-
-
-
-			// Recuperamos el QLearner modificado en este juego de Pacman
-			//learner = ((QController)ghostController).getQLearner();
 
 		}
 
-
-
-
-		millis = System.currentTimeMillis() % 1000 - millis;
+		long end_time = System.nanoTime();
+		double tiempo = (((end_time - start_time)/1e6)/1000);
 		System.out.println(learner);
-		System.out.println("Time: " + millis);
+
+		System.out.printf("Tiempo: %.2f segundos%n", tiempo);
 	}
 
 }

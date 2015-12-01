@@ -46,7 +46,7 @@ public class QTabla {
 
         float epsilon = 0.3f;
         Random rand = new Random();
-        Accion mejor = mejor = getMejorAccion(e);
+        Accion mejor = getMejorAccion(e);
         int probabilidadObtenida = (rand.nextInt((100-0)+1) + 0);
         ArrayList<Accion> listaAcciones = Accion.getActionList();
 
@@ -57,15 +57,6 @@ public class QTabla {
         }
 
         //System.out.println("Prob obtenida random: " + (probabilidadObtenida / 100.0f) + " Accion final: " + mejor.getNombreAccion());
-
-        // Seleccion de accion aleatoria
-        //Accion mejor = Accion.getAccionById(rand.nextInt((2 - 0) + 1) + 0);
-
-
-
-        // Si la prob esta entre epsilon -> coger mejor accion
-        // si no esta, hacer un random entre las demas acciones
-
 
         return mejor;
     }
@@ -99,7 +90,6 @@ public class QTabla {
 
         String resultado = "################  - QVALORES -  ################\n";
         for(int estado = 0; estado < qvalores.length; estado++){
-            //resultado += String.format("%-3d :", estado);
             resultado += listaEstados[estado];
             for(int accion = 0; accion < qvalores[0].length; accion++){
                 resultado += String.format("% 5.2f ", qvalores[estado][accion]);
