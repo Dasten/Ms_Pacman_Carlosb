@@ -50,22 +50,17 @@ public class AlgoritmoGenetico {
         Executor exec = new Executor();
         ControladorFuzzyGen controlador;
 
-        int n = 50;
-        AlgoritmoGenetico poblacion = new AlgoritmoGenetico(n);
+        int numPoblacion = 50;
+        AlgoritmoGenetico poblacion = new AlgoritmoGenetico(numPoblacion);
         int numGeneraciones = 0;
         int nControlador = 10;
 
-        for(int i = 0; i < poblacion.getNumPoblacion(); i++){
-            System.out.print("Individuo " + i + " genotipo: " + poblacion.getGenotipoOfIndividuo(i).toString());
-        }
-
-
-        // Ejecutamos un numero N de veces el juego pasandole cada uno de los individuos de la poblacion
+        // Ejecutamos un numero nControlador de veces el juego pasandole cada uno de los individuos de la poblacion
         for(int i = 0; i < poblacion.getNumPoblacion(); i++){
             Genotipo individuo = poblacion.getGenotipoOfIndividuo(i);
             controlador = new ControladorFuzzyGen(individuo);
             individuo.setFitness((float)exec.runGenetico(controlador, new StarterGhosts(), nControlador));
-            controlador.printReglas();
+            System.out.println("Individuo " + i + " Genotipo: " + individuo.toString());
         }
 
 

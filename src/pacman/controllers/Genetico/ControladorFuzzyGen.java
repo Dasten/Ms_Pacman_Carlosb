@@ -137,8 +137,9 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
     }
 
     void printReglas(){
-        //
-        System.out.println(reglas.getRule());
+        for (Rule regla : reglas.getRules()) {
+            System.out.println(regla.toString());
+        }
     }
 
 

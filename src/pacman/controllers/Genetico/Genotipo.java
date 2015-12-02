@@ -88,6 +88,7 @@ public class Genotipo {
             cromosoma += mCromosoma[i] + " ";
         }
         cromosoma += "\n";
+        cromosoma += "Fitness: " + mFitness + "\n";
         return cromosoma;
     }
 

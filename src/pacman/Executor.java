@@ -485,11 +485,10 @@ public class Executor
 			}
 
 			avgScore+=game.getScore();
-			System.out.println(i+"\t"+game.getScore());
 		}
 
 		//System.out.println(avgScore/trials);
-		return avgScore;
+		return (avgScore/trials);
 	}
 
 }
