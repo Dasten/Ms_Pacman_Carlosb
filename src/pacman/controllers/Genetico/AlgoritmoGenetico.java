@@ -65,11 +65,9 @@ public class AlgoritmoGenetico {
             Genotipo individuo = poblacion.getGenotipoOfIndividuo(i);
             controlador = new ControladorFuzzyGen(individuo);
             individuo.setFitness((float)exec.runGenetico(controlador, new StarterGhosts(), nControlador));
-
+            System.out.println(controlador.reglas.toString());
         }
 
 
-
-        //exec.runQLearner(new StarterPacMan(), new StarterGhosts());
     }
 }
