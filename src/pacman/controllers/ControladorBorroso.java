@@ -146,7 +146,7 @@ public class ControladorBorroso extends Controller<EnumMap<GHOST,MOVE>>{
             movimientoBlinky = ultimoMovimientoPacMan;
         }
 
-        // Si la estrategia obtenida es QUIETO, Pac-Man se queda quieto
+        // Si la estrategia obtenida es NEUTRO, Pac-Man se queda quieto
         if(estrategia.equals("NEUTRO"))
         {
             movimientoBlinky = MOVE.NEUTRAL;
