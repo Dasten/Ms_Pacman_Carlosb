@@ -20,6 +20,18 @@ public class AlgoritmoGenetico {
         }
     }
 
+    public void evaluarGeneracion() {
+
+    }
+
+    public void generarSiguienteGeneracion(){
+
+    }
+
+    public void reproducir(Genotipo padre, Genotipo madre){
+
+    }
+
     int getNumPoblacion(){
         return mPoblacion.size();
     }

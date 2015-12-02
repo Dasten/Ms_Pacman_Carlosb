@@ -15,6 +15,7 @@ public class Genotipo {
     Genotipo(){
         mCromosoma = new int[AlgoritmoGenetico.NUM_CROMOSOMA];
         mFitness = 0.f;
+        evaluado = false;
     }
 
     public void randomizeCromosoma(){
@@ -46,6 +47,38 @@ public class Genotipo {
 
         Arrays.sort(randomValores);
         return randomValores;
+    }
+
+    public void setFitness(float fitness)
+    {
+        mFitness = fitness;
+    }
+
+    public float getFitness(){
+        return mFitness;
+    }
+
+    public int getGenCromosoma(int numGen){
+        return mCromosoma[numGen];
+    }
+
+    public void setGenCromosoma(int numGen, int valorCromosoma){
+        mCromosoma[numGen] = valorCromosoma;
+    }
+
+    public int getNumCromosoma(){
+        return mCromosoma.length;
+    }
+
+    public String getFenotipo(){
+        String fenotipo = "";
+
+
+        return fenotipo;
+    }
+
+    public void mutar(){
+
     }
 
     void printCromosoma(){
