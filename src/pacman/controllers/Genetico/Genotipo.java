@@ -71,8 +71,21 @@ public class Genotipo {
         this.mCromosoma = mCromosoma;
     }
 
+
+
+    // Para mutar obtendremos un numero aleatorio de cromosomas (entre 1 y 36)
+    // Se escogeran de forma aleatoria en el genotipo tantos cromosomas como numero hayamos obtenido
+    // Se sustituiran por valores aleatorios entre 0 y 200
     public void mutar(){
 
+        Random rand = new Random();
+        int cantidadCromosomasAMutar = (rand.nextInt(35 - 0 + 1) + 0);
+
+        for(int i = 0; i < cantidadCromosomasAMutar; i++){
+            int indiceRandom = (rand.nextInt(35 - 0 + 1) + 0);
+            int valorMutado = (rand.nextInt(200 - 0 + 1) + 0);
+            mCromosoma[indiceRandom] = valorMutado;
+        }
     }
 
     void printCromosoma(){

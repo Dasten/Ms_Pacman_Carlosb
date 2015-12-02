@@ -55,8 +55,6 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
         inputVariable.addTerm(new Trapezoid("MUCHO", genotivoIndividuo[20], genotivoIndividuo[21], genotivoIndividuo[22], genotivoIndividuo[23]));
         engine.addInputVariable(inputVariable);
 
-
-
         // Variable del Controlador correspondente con distancia al powerpills
         inputVariable = new InputVariable();
         inputVariable.setEnabled(true);
@@ -66,10 +64,6 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
         inputVariable.addTerm(new Trapezoid("NORMAL", genotivoIndividuo[28], genotivoIndividuo[29], genotivoIndividuo[30], genotivoIndividuo[31]));
         inputVariable.addTerm(new Trapezoid("LEJOS", genotivoIndividuo[32], genotivoIndividuo[33], genotivoIndividuo[34], genotivoIndividuo[35]));
         engine.addInputVariable(inputVariable);
-
-
-
-
 
         // Variable de Salida del controlador, representa la Estrategia a tomar por Pac-Man
         OutputVariable outputVariable = new OutputVariable();
@@ -175,7 +169,6 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
             }
         }
     }
-
 
 
     @Override
