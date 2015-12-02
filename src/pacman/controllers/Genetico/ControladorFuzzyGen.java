@@ -24,6 +24,11 @@ import static pacman.game.Constants.*;
 public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
     RuleBlock reglas;
+    Genotipo individuo;
+
+    public ControladorFuzzyGen(Genotipo individuo) {
+        this.individuo = individuo;
+    }
 
     public void configure(Engine engine, int[] genotipo ){
 
@@ -135,8 +140,13 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
     }
 
 
+    public Genotipo getIndividuo() {
+        return individuo;
+    }
 
-
+    public void setIndividuo(Genotipo individuo) {
+        this.individuo = individuo;
+    }
 
     @Override
     public Constants.MOVE getMove(Game game, long timeDue) {

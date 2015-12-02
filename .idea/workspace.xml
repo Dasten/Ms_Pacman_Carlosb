@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9e037c9-bb8d-488a-b778-fedee33d64b3" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorGenetico.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/pacman/Executor.class" afterPath="$PROJECT_DIR$/bin/pacman/Executor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/Executor.java" afterPath="$PROJECT_DIR$/src/pacman/Executor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" />
     </list>
     <ignored path="Ms_Pacman.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,21 +30,24 @@
       <file leaf-file-name="Executor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pacman/Executor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+            <state vertical-scroll-proportion="5.851852">
+              <caret line="470" column="5" selection-start-line="470" selection-start-column="5" selection-end-line="470" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1691#1718#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AlgoritmoGenetico.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AlgoritmoGenetico.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.8205805">
+              <caret line="66" column="100" selection-start-line="66" selection-start-column="100" selection-end-line="66" selection-end-column="100" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,15 +101,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControladorFuzzyGen.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControladorFuzzyGen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41688654">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8092#8093#0" expanded="true" />
-                <element signature="e#8145#8146#0" expanded="true" />
+                <element signature="e#826#827#0" expanded="true" />
+                <element signature="e#868#869#0" expanded="true" />
+                <element signature="e#8212#8213#0" expanded="true" />
+                <element signature="e#8265#8266#0" expanded="true" />
+                <element signature="e#8304#8305#0" expanded="true" />
+                <element signature="e#8336#8337#0" expanded="true" />
+                <element signature="e#8388#8389#0" expanded="true" />
+                <element signature="e#8430#8431#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -142,11 +150,11 @@
         <option value="$PROJECT_DIR$/src/pacman/controllers/QLearning/Estado.java" />
         <option value="$PROJECT_DIR$/src/pacman/controllers/QLearning/QTabla.java" />
         <option value="$PROJECT_DIR$/src/dataRecording/DataTuple.java" />
-        <option value="$PROJECT_DIR$/src/pacman/Executor.java" />
         <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorGenetico.java" />
-        <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" />
         <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java" />
         <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" />
+        <option value="$PROJECT_DIR$/src/pacman/Executor.java" />
+        <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" />
       </list>
     </option>
   </component>
@@ -787,7 +795,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449049034209</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Arreglado el sistema de generacion de cromosomas random">
+      <created>1449058536039</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1449058536039</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -839,7 +853,8 @@
     <MESSAGE value="Limpias las clases del QLearning y arreglado el cronometro del tiempo de ejecucion." />
     <MESSAGE value="Creado el randomCromosoma para crear una poblacion de forma random" />
     <MESSAGE value="Añadidos varios metodos en las clases del controlador genetico" />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadidos varios metodos en las clases del controlador genetico" />
+    <MESSAGE value="Arreglado el sistema de generacion de cromosomas random" />
+    <option name="LAST_COMMIT_MESSAGE" value="Arreglado el sistema de generacion de cromosomas random" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1191,38 +1206,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/Executor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="28" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pacman/controllers/QLearning/QTabla.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1252,14 +1239,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java">
+    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41688654">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8092#8093#0" expanded="true" />
-            <element signature="e#8145#8146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#826#827#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#8212#8213#0" expanded="true" />
+            <element signature="e#8265#8266#0" expanded="true" />
+            <element signature="e#8304#8305#0" expanded="true" />
+            <element signature="e#8336#8337#0" expanded="true" />
+            <element signature="e#8388#8389#0" expanded="true" />
+            <element signature="e#8430#8431#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacman/Executor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.851852">
+          <caret line="470" column="5" selection-start-line="470" selection-start-column="5" selection-end-line="470" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1691#1718#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8205805">
+          <caret line="66" column="100" selection-start-line="66" selection-start-column="100" selection-end-line="66" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

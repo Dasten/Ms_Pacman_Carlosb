@@ -1,7 +1,11 @@
 package pacman.controllers.Genetico;
 
 
+import pacman.Executor;
+import pacman.controllers.examples.StarterGhosts;
+
 import java.util.ArrayList;
+import java.util.concurrent.locks.AbstractQueuedLongSynchronizer;
 
 public class AlgoritmoGenetico {
 
@@ -43,15 +47,29 @@ public class AlgoritmoGenetico {
 
     public static void main( String[] args ) {
 
+        Executor exec = new Executor();
+        ControladorFuzzyGen controlador;
+
         int n = 50;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(n);
         int generationCount = 0;
+        int nControlador = 10;
 
         for(int i = 0; i < poblacion.getNumPoblacion(); i++){
             System.out.print("Individuo " + i + " genotipo: " + poblacion.getGenotipoOfIndividuo(i).toString());
         }
 
 
+        // Ejecutamos un numero N de veces el juego pasandole cada uno de los individuos de la poblacion
+        for(int i = 0; i < poblacion.getNumPoblacion(); i++){
+            Genotipo individuo = poblacion.getGenotipoOfIndividuo(i);
+            controlador = new ControladorFuzzyGen(individuo);
+            individuo.setFitness((float)exec.runGenetico(controlador, new StarterGhosts(), nControlador));
 
+        }
+
+
+
+        //exec.runQLearner(new StarterPacMan(), new StarterGhosts());
     }
 }

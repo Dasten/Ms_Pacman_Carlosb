@@ -467,4 +467,29 @@ public class Executor
 		System.out.printf("Tiempo: %.2f segundos%n", tiempo);
 	}
 
+	public double runGenetico(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,int trials)
+	{
+		double avgScore=0;
+
+		Random rnd=new Random(0);
+		Game game;
+
+		for(int i=0;i<trials;i++)
+		{
+			game=new Game(rnd.nextLong());
+
+			while(!game.gameOver())
+			{
+				game.advanceGame(pacManController.getMove(game.copy(),System.currentTimeMillis()+DELAY),
+						ghostController.getMove(game.copy(),System.currentTimeMillis()+DELAY));
+			}
+
+			avgScore+=game.getScore();
+			System.out.println(i+"\t"+game.getScore());
+		}
+
+		//System.out.println(avgScore/trials);
+		return avgScore;
+	}
+
 }
