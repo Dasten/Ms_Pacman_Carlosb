@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c9e037c9-bb8d-488a-b778-fedee33d64b3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" />
     </list>
@@ -30,8 +29,8 @@
       <file leaf-file-name="Executor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pacman/Executor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-38.22222">
-              <caret line="470" column="5" selection-start-line="470" selection-start-column="5" selection-end-line="470" selection-end-column="5" />
+            <state vertical-scroll-proportion="-4.2222223">
+              <caret line="416" column="18" selection-start-line="416" selection-start-column="18" selection-end-line="416" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1691#1718#0" expanded="true" />
@@ -44,19 +43,7 @@
         <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QTabla.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pacman/controllers/QLearning/QTabla.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="35" />
+              <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+              <caret line="87" column="45" selection-start-line="87" selection-start-column="45" selection-end-line="87" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1060#1061#0" expanded="true" />
@@ -81,6 +68,7 @@
                 <element signature="e#1360#1361#0" expanded="true" />
                 <element signature="e#1395#1396#0" expanded="true" />
                 <element signature="e#1435#1436#0" expanded="true" />
+                <element signature="e#1471#1472#0" expanded="true" />
                 <element signature="e#1504#1505#0" expanded="true" />
                 <element signature="e#1555#1556#0" expanded="true" />
                 <element signature="e#1599#1600#0" expanded="true" />
@@ -89,66 +77,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControladorBorroso.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="214" selection-end-column="81" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ControladorFuzzyGen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.40369394">
-              <caret line="247" column="0" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3322884">
+              <caret line="138" column="23" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#790#791#0" expanded="true" />
                 <element signature="e#832#833#0" expanded="true" />
-                <element signature="e#8545#8546#0" expanded="true" />
-                <element signature="e#8598#8599#0" expanded="true" />
-                <element signature="e#8637#8638#0" expanded="true" />
-                <element signature="e#8669#8670#0" expanded="true" />
-                <element signature="e#8721#8722#0" expanded="true" />
-                <element signature="e#8763#8764#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataTuple.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dataRecording/DataTuple.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="166" column="61" selection-start-line="166" selection-start-column="61" selection-end-line="166" selection-end-column="61" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StarterPacMan.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pacman/controllers/examples/StarterPacMan.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="57" selection-start-line="70" selection-start-column="57" selection-end-line="70" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RandomPacMan.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pacman/controllers/examples/RandomPacMan.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-              <folding>
-                <element signature="e#471#472#0" expanded="true" />
-                <element signature="e#523#524#0" expanded="true" />
+                <element signature="e#8647#8648#0" expanded="true" />
+                <element signature="e#8679#8680#0" expanded="true" />
+                <element signature="e#8731#8732#0" expanded="true" />
+                <element signature="e#8773#8774#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,10 +124,10 @@
         <option value="$PROJECT_DIR$/src/pacman/controllers/QLearning/QTabla.java" />
         <option value="$PROJECT_DIR$/src/dataRecording/DataTuple.java" />
         <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorGenetico.java" />
-        <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java" />
         <option value="$PROJECT_DIR$/src/pacman/Executor.java" />
-        <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" />
         <option value="$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java" />
+        <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java" />
+        <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" />
         <option value="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" />
       </list>
     </option>
@@ -846,7 +787,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449066236481</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Creados los metodos para obtener los datos del Game para el motor borroso. Implementado el GetMove del controlador">
+      <created>1449071209309</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1449071209310</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -857,10 +804,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32608697" sideWeight="0.4838946" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36801243" sideWeight="0.53147876" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46118012" sideWeight="0.53147876" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36801243" sideWeight="0.46852124" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46118012" sideWeight="0.46852124" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20058565" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -901,7 +848,8 @@
     <MESSAGE value="Arreglado el sistema de generacion de cromosomas random" />
     <MESSAGE value="Creada la llamada al controlador y creado la funcion runGenetico" />
     <MESSAGE value="Imprmimos el fenotipo de cada individuo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Imprmimos el fenotipo de cada individuo" />
+    <MESSAGE value="Creados los metodos para obtener los datos del Game para el motor borroso. Implementado el GetMove del controlador" />
+    <option name="LAST_COMMIT_MESSAGE" value="Creados los metodos para obtener los datos del Game para el motor borroso. Implementado el GetMove del controlador" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1222,12 +1170,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/QLearning/QTabla.java">
+    <entry file="file://$PROJECT_DIR$/src/pacman/entries/ghosts/MyGhosts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.33245382">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataRecording/DataTuple.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.292876">
+          <caret line="166" column="61" selection-start-line="166" selection-start-column="61" selection-end-line="166" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/examples/StarterPacMan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.9604223">
+          <caret line="70" column="57" selection-start-line="70" selection-start-column="57" selection-end-line="70" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="9.778364">
+          <caret line="218" column="13" selection-start-line="218" selection-start-column="13" selection-end-line="218" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/QLearning/QTabla.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4934037">
+          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/examples/RandomPacMan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40369394">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding>
+            <element signature="e#471#472#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1235,7 +1228,7 @@
     <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
+          <caret line="87" column="45" selection-start-line="87" selection-start-column="45" selection-end-line="87" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1060#1061#0" expanded="true" />
@@ -1248,6 +1241,7 @@
             <element signature="e#1360#1361#0" expanded="true" />
             <element signature="e#1395#1396#0" expanded="true" />
             <element signature="e#1435#1436#0" expanded="true" />
+            <element signature="e#1471#1472#0" expanded="true" />
             <element signature="e#1504#1505#0" expanded="true" />
             <element signature="e#1555#1556#0" expanded="true" />
             <element signature="e#1599#1600#0" expanded="true" />
@@ -1257,8 +1251,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pacman/Executor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.22222">
-          <caret line="470" column="5" selection-start-line="470" selection-start-column="5" selection-end-line="470" selection-end-column="5" />
+        <state vertical-scroll-proportion="-4.2222223">
+          <caret line="416" column="18" selection-start-line="416" selection-start-column="18" selection-end-line="416" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1691#1718#0" expanded="true" />
@@ -1266,55 +1260,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/examples/RandomPacMan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="7" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-          <folding>
-            <element signature="e#471#472#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/examples/StarterPacMan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="57" selection-start-line="70" selection-start-column="57" selection-end-line="70" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/entries/ghosts/MyGhosts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33245382">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="9" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataRecording/DataTuple.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="166" column="61" selection-start-line="166" selection-start-column="61" selection-end-line="166" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="207" column="0" selection-start-line="207" selection-start-column="0" selection-end-line="214" selection-end-column="81" />
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1323,18 +1272,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40369394">
-          <caret line="247" column="0" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3322884">
+          <caret line="138" column="23" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#790#791#0" expanded="true" />
             <element signature="e#832#833#0" expanded="true" />
-            <element signature="e#8545#8546#0" expanded="true" />
-            <element signature="e#8598#8599#0" expanded="true" />
-            <element signature="e#8637#8638#0" expanded="true" />
-            <element signature="e#8669#8670#0" expanded="true" />
-            <element signature="e#8721#8722#0" expanded="true" />
-            <element signature="e#8763#8764#0" expanded="true" />
+            <element signature="e#8647#8648#0" expanded="true" />
+            <element signature="e#8679#8680#0" expanded="true" />
+            <element signature="e#8731#8732#0" expanded="true" />
+            <element signature="e#8773#8774#0" expanded="true" />
           </folding>
         </state>
       </provider>

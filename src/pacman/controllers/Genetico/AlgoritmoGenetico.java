@@ -52,7 +52,7 @@ public class AlgoritmoGenetico {
 
         int n = 50;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(n);
-        int generationCount = 0;
+        int numGeneraciones = 0;
         int nControlador = 10;
 
         for(int i = 0; i < poblacion.getNumPoblacion(); i++){

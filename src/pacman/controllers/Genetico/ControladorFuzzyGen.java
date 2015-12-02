@@ -137,7 +137,8 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
     }
 
     void printReglas(){
-        System.out.println(reglas.toString());
+        //
+        System.out.println(reglas.getRule());
     }
 
 
@@ -188,9 +189,10 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
         String estrategiaResultado = "";
         MOVE direccionPacMan = MOVE.NEUTRAL;
 
-        ControladorFuzzyGen controlador = new ControladorFuzzyGen();
+        //ControladorFuzzyGen controlador = new ControladorFuzzyGen();
         Engine engine = new Engine();
-        controlador.configure(engine);
+        //controlador.configure(engine);
+        configure(engine);
 
 
 
