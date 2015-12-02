@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class AlgoritmoGenetico {
 
-    static int NUM_CROMOSOMA = 32;
+    static int NUM_CROMOSOMA = 36;
     static int NUM_POBLACION = 50;
 
     ArrayList<Genotipo> mPoblacion;
@@ -40,4 +40,18 @@ public class AlgoritmoGenetico {
         return mPoblacion.get(index);
     }
 
+
+    public static void main( String[] args ) {
+
+        int n = 50;
+        AlgoritmoGenetico poblacion = new AlgoritmoGenetico(n);
+        int generationCount = 0;
+
+        for(int i = 0; i < poblacion.getNumPoblacion(); i++){
+            System.out.print("Individuo " + i + " genotipo: " + poblacion.getGenotipoOfIndividuo(i).toString());
+        }
+
+
+
+    }
 }

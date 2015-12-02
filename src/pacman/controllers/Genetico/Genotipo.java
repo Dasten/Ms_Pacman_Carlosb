@@ -19,18 +19,11 @@ public class Genotipo {
     }
 
     public void randomizeCromosoma(){
-        // code for randomization of initial weights goes HERE
-        int numAtri = 3;
-        int numValores = 3;
         int randoms[];
-
-        for(int i = 0; i < numAtri; i++){
-            for(int j = 0; j < numValores; j++)
-            {
-                randoms = getRandomCromosomaForValue();
-                for(int k = 0; k < randoms.length; k++){
-                    mCromosoma[i+j+k] = randoms[k];
-                }
+        for (int j=0; j<36; j+=4){
+            randoms = getRandomCromosomaForValue();
+            for(int i=0; i<4; i++){
+                mCromosoma[j+i] = randoms[i];
             }
         }
     }
@@ -70,11 +63,12 @@ public class Genotipo {
         return mCromosoma.length;
     }
 
-    public String getFenotipo(){
-        String fenotipo = "";
+    public int[] getmCromosoma() {
+        return mCromosoma;
+    }
 
-
-        return fenotipo;
+    public void setmCromosoma(int[] mCromosoma) {
+        this.mCromosoma = mCromosoma;
     }
 
     public void mutar(){
@@ -85,6 +79,16 @@ public class Genotipo {
         for(int i = 0; i < mCromosoma.length; i++){
             System.out.print(mCromosoma[i] + " ");
         }
+        System.out.print("\n");
+    }
+
+    public String toString(){
+        String cromosoma = "";
+        for(int i = 0; i < mCromosoma.length; i++){
+            cromosoma += mCromosoma[i] + " ";
+        }
+        cromosoma += "\n";
+        return cromosoma;
     }
 
 }

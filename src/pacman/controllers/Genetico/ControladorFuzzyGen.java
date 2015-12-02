@@ -21,16 +21,12 @@ import java.util.Random;
 import static pacman.game.Constants.*;
 
 
-public class ControladorGenetico extends Controller<Constants.MOVE> {
+public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
-    AlgoritmoGenetico poblacion = new AlgoritmoGenetico(AlgoritmoGenetico.NUM_POBLACION);
-    int numGeneracion = 0;
-
-
-
-
+    RuleBlock reglas;
 
     public void configure(Engine engine, int[] genotipo ){
+
         engine.setName("Estrategia");
 
         // Variable del Controlador correspondiente con la distancia
@@ -130,8 +126,13 @@ public class ControladorGenetico extends Controller<Constants.MOVE> {
 
         engine.addRuleBlock(ruleBlock);
 
+        reglas = ruleBlock;
+
     }
 
+    void printReglas(){
+        System.out.println(reglas.toString());
+    }
 
 
 
