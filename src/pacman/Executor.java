@@ -95,7 +95,8 @@ public class Executor
 		//exec.runGameTimed(new DataCollectorController(new KeyBoardInput()), new AggressiveGhosts(), visual);
 
 		// Ejecutamos el juego con el controlador de QLearning y con las repeticiones que configuramos
-		int repeticiones = 1000;
+		// A modo orientativo 2000 repeticiones tarda unos 40 segundos en ser ejecutadas
+		int repeticiones = 2000;
 		exec.runQLearner(new StarterPacMan(), new QController(), repeticiones);
 
 	}
@@ -410,6 +411,7 @@ public class Executor
 
 	public void runQLearner(Controller<MOVE> pacManController, Controller<EnumMap<GHOST,MOVE>> ghostController, int iteraciones)
 	{
+		System.out.println("Entrenamos nuestro controlador con " + iteraciones + " iteraciones.");
 		long start_time = System.nanoTime();
 
 		QLearner learner = new QLearner();
@@ -464,8 +466,43 @@ public class Executor
 		double tiempo = (((end_time - start_time)/1e6)/1000);
 		System.out.println(learner);
 
-		System.out.printf("Tiempo: %.2f segundos%n", tiempo);
+		System.out.printf("Tiempo de entrenamiento: %.2f segundos%n", tiempo);
+
+
+		System.out.printf("Ejecucion del juego en modo grafico con la QTable generada en el entrenamiento.");
+
+		game = new Game(0);
+		GameView gv = new GameView(game).showGame();
+
+		while(!game.gameOver())
+		{
+
+			pacManController.update(game.copy(),System.currentTimeMillis()+DELAY);
+			ghostController.update(game.copy(),System.currentTimeMillis()+DELAY);
+
+			// Obtenemos la mejor accion segun el estado actual (miramos en la QTabla la accion con mas puntuacion para ese estado)
+			Accion mejorAccionFromTQtable = learner.getMejorAccion(learner.getState(game));
+			siguienteMovimiento = mejorAccionFromTQtable.getMovimientoFromAccion(game);
+
+			// Le pasamos el siguiente movimiento al controlador
+			((QController)ghostController).setSiguienteMovimiento(siguienteMovimiento);
+
+			game.advanceGame(pacManController.getMove(game.copy(),System.currentTimeMillis()+DELAY),
+					ghostController.getMove(game.copy(),System.currentTimeMillis()+DELAY));
+
+			try
+			{
+				Thread.sleep(DELAY);
+			}
+			catch(InterruptedException e)
+			{
+				e.printStackTrace();
+			}
+
+			gv.repaint();
+		}
 	}
+
 
 	public double runGenetico(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,int trials)
 	{

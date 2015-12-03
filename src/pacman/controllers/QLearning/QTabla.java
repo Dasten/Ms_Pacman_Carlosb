@@ -63,7 +63,7 @@ public class QTabla {
 
 
 
-    private Accion getMejorAccion(Estado e) {
+    public Accion getMejorAccion(Estado e) {
 
         Accion mejor = null;
         float maximo = 0.0f;

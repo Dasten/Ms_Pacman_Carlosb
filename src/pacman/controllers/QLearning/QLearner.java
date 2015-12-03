@@ -30,6 +30,10 @@ public class QLearner {
         return qvalores.getAccion(e);
     }
 
+    public Accion getMejorAccion(Estado e){
+        return qvalores.getMejorAccion(e);
+    }
+
     public void update(Estado e, Accion a, float recompensa, Estado ePrima){
         qvalores.update(e, a, ePrima, recompensa);
         updates++;
@@ -39,6 +43,7 @@ public class QLearner {
         String resultado = String.format("Actualizaciones: %d\n%s", updates,qvalores.toString());
         return resultado;
     }
+
 
 
 
