@@ -81,14 +81,13 @@ public class AlgoritmoGenetico {
         Genotipo[] hijos = new Genotipo[2];
         float r = 0.4f;
 
-        // Creamos el hijo 0
+        // Creamos los hijos por Cruce Aritmetico
         for(int i = 0; i < NUM_CROMOSOMA; i++){
-            hijos[0].setGenCromosoma(i, (padre.getGenCromosoma(i) * r) + (madre.getGenCromosoma(i) * (1-r) ));
-            hijos[0].setGenCromosoma(i, (padre.getGenCromosoma(i) * (1 - r)) + (madre.getGenCromosoma(i) * r));
+            hijos[0].setGenCromosoma(i, (((padre.getGenCromosoma(i) * r) + (madre.getGenCromosoma(i) * (1-r)))));
+            hijos[0].setGenCromosoma(i, (((padre.getGenCromosoma(i) * (1 - r)) + (madre.getGenCromosoma(i) * r))));
         }
 
-
-        // Creamos el hijo 1
+        return hijos;
 
 
         // #####################

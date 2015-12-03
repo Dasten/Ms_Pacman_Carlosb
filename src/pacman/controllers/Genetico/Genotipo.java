@@ -17,14 +17,14 @@ public class Genotipo {
     static int NUM_EVALUACIONES = 10;
 
     protected float mFitness;
-    protected int mCromosoma[];
+    protected float mCromosoma[];
     protected boolean evaluado;
     protected Engine mFenotipo;
 
 
 
     Genotipo(){
-        mCromosoma = new int[AlgoritmoGenetico.NUM_CROMOSOMA];
+        mCromosoma = new float[AlgoritmoGenetico.NUM_CROMOSOMA];
         mFitness = 0.f;
         evaluado = false;
         mFenotipo = null;
@@ -63,11 +63,11 @@ public class Genotipo {
         return mFitness;
     }
 
-    public int getGenCromosoma(int numGen){
+    public float getGenCromosoma(int numGen){
         return mCromosoma[numGen];
     }
 
-    public void setGenCromosoma(int numGen, int valorCromosoma){
+    public void setGenCromosoma(int numGen, float valorCromosoma){
         mCromosoma[numGen] = valorCromosoma;
     }
 
@@ -75,11 +75,11 @@ public class Genotipo {
         return mCromosoma.length;
     }
 
-    public int[] getmCromosoma() {
+    public float[] getmCromosoma() {
         return mCromosoma;
     }
 
-    public void setmCromosoma(int[] mCromosoma) {
+    public void setmCromosoma(float[] mCromosoma) {
         this.mCromosoma = mCromosoma;
     }
 

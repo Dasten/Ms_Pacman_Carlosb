@@ -32,7 +32,7 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
     public void configure(Engine engine){
 
-        int[] genotivoIndividuo = individuo.getmCromosoma();
+        float[] genotivoIndividuo = individuo.getmCromosoma();
 
         engine.setName("Estrategia");
 
