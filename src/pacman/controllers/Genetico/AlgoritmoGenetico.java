@@ -5,6 +5,8 @@ import pacman.Executor;
 import pacman.controllers.examples.StarterGhosts;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 public class AlgoritmoGenetico {
@@ -25,7 +27,36 @@ public class AlgoritmoGenetico {
     }
 
     public void evaluarGeneracion() {
+        ArrayList<Genotipo> nuevaGenracion = generarSiguienteGeneracion();
 
+        // Ordenamos la poblacion segun su fitness
+        ordenarPoblacionByFitness(mPoblacion);
+
+        //Eliminamos tantos elementos de la poblacion como nuevos elementos hayamos genrado
+        //Eliminamos los elementos con peor fitness de la poblacion
+        for(int i = 0; i < nuevaGenracion.size(); i++){
+            mPoblacion.remove(0);
+        }
+
+        // Sumamos uno a las veces que han evaluado los individuos que quedan
+        for(int i = 0; i < mPoblacion.size(); i++){
+            mPoblacion.get(i).evaluarGenotipo();
+        }
+
+        // Metemos la nueva generacion en la poblacion
+        for(int i = 0; i < nuevaGenracion.size(); i++){
+            mPoblacion.add(nuevaGenracion.get(i));
+        }
+
+    }
+
+    public static void ordenarPoblacionByFitness(ArrayList<Genotipo> poblacion){
+        Collections.sort(poblacion, new Comparator<Genotipo>() {
+            @Override public int compare(Genotipo g1, Genotipo g2) {
+                return Float.compare(g1.mFitness, g2.mFitness); // Ascending
+            }
+
+        });
     }
 
     // Obtenemos una lista con los hijos de la nueva generacion
@@ -97,7 +128,15 @@ public class AlgoritmoGenetico {
         return listaPadres;
     }
 
-    public static void main( String[] args ) {
+    public ArrayList<Genotipo> getPoblacion() {
+        return mPoblacion;
+    }
+
+    public void setPoblacion(ArrayList<Genotipo> mPoblacion) {
+        this.mPoblacion = mPoblacion;
+    }
+
+    public static void main(String[] args ) {
 
         Executor exec = new Executor();
         ControladorFuzzyGen controlador;
@@ -107,6 +146,10 @@ public class AlgoritmoGenetico {
         int numGeneraciones = 0;
         int nControlador = 10;
 
+
+
+
+
         // Ejecutamos un numero nControlador de veces el juego pasandole cada uno de los individuos de la poblacion
         for(int i = 0; i < poblacion.getNumPoblacion(); i++){
             Genotipo individuo = poblacion.getGenotipoOfIndividuo(i);
@@ -114,6 +157,14 @@ public class AlgoritmoGenetico {
             individuo.setFitness((float)exec.runGenetico(controlador, new StarterGhosts(), nControlador));
             System.out.println("Individuo " + i + " Genotipo: " + individuo.toString());
         }
+
+
+        /*
+        ordenarPoblacionByFitness(poblacion.getPoblacion());
+        for(int i = 0; i < poblacion.getNumPoblacion(); i++){
+            System.out.println("Individuo " + i + " Fitness: " + poblacion.getGenotipoOfIndividuo(i).getFitness());
+        }
+        */
 
 
     }

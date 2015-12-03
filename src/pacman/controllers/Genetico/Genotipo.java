@@ -10,12 +10,12 @@ public class Genotipo {
 
     protected float mFitness;
     protected int mCromosoma[];
-    protected boolean evaluado;
+    protected int evaluado;
 
     Genotipo(){
         mCromosoma = new int[AlgoritmoGenetico.NUM_CROMOSOMA];
         mFitness = 0.f;
-        evaluado = false;
+        evaluado = 0;
     }
 
     public void randomizeCromosoma(){
@@ -71,7 +71,9 @@ public class Genotipo {
         this.mCromosoma = mCromosoma;
     }
 
-
+    public void evaluarGenotipo(){
+        evaluado++;
+    }
 
     // Para mutar obtendremos un numero aleatorio de cromosomas (entre 1 y 36)
     // Se escogeran de forma aleatoria en el genotipo tantos cromosomas como numero hayamos obtenido
