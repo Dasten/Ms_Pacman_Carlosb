@@ -1,21 +1,33 @@
 package pacman.controllers.Genetico;
 
 
+import com.fuzzylite.Engine;
+import com.fuzzylite.rule.Rule;
+import com.fuzzylite.rule.RuleBlock;
+import pacman.Executor;
+import pacman.controllers.examples.StarterGhosts;
+
+import javax.print.attribute.standard.MediaSize;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.SynchronousQueue;
 
 public class Genotipo {
 
+    static int NUM_EVALUACIONES = 10;
 
     protected float mFitness;
     protected int mCromosoma[];
-    protected int evaluado;
+    protected boolean evaluado;
+    protected Engine mFenotipo;
+
+
 
     Genotipo(){
         mCromosoma = new int[AlgoritmoGenetico.NUM_CROMOSOMA];
         mFitness = 0.f;
-        evaluado = 0;
+        evaluado = false;
+        mFenotipo = null;
     }
 
     public void randomizeCromosoma(){
@@ -72,7 +84,11 @@ public class Genotipo {
     }
 
     public void evaluarGenotipo(){
-        evaluado++;
+        Executor exec = new Executor();
+        ControladorFuzzyGen controlador = new ControladorFuzzyGen(this);
+        mFitness = (float)exec.runGenetico(controlador, new StarterGhosts(), NUM_EVALUACIONES);
+        mFenotipo = controlador.getEngine();
+        evaluado = true;
     }
 
     // Para mutar obtendremos un numero aleatorio de cromosomas (entre 1 y 36)
@@ -105,6 +121,23 @@ public class Genotipo {
         cromosoma += "\n";
         cromosoma += "Fitness: " + mFitness + "\n";
         return cromosoma;
+    }
+
+    public boolean isEvaluado(){
+        return evaluado;
+    }
+
+    public void printFenotipo(){
+
+
+        // Print todos los fenotipos
+        // Atributo Distancia valor Cerca: (XX,XX,XX,XX)
+        // [...]
+
+        RuleBlock reglas = mFenotipo.getRuleBlock(0);
+        for (Rule regla : reglas.getRules()) {
+            System.out.println(regla.toString());
+        }
     }
 
 }

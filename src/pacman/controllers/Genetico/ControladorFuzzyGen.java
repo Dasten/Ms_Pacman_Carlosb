@@ -22,6 +22,7 @@ import static pacman.game.Constants.*;
 
 public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
+    Engine engine;
     RuleBlock reglas;
     Genotipo individuo;
 
@@ -130,7 +131,7 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
     }
 
-    void printReglas(){
+    public void printReglas(){
         for (Rule regla : reglas.getRules()) {
             System.out.println(regla.toString());
         }
@@ -184,7 +185,8 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
         MOVE direccionPacMan = MOVE.NEUTRAL;
 
         //ControladorFuzzyGen controlador = new ControladorFuzzyGen();
-        Engine engine = new Engine();
+        //Engine engine = new Engine();
+        engine = new Engine();
         //controlador.configure(engine);
         configure(engine);
 
@@ -326,4 +328,11 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
     }
 
 
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
 }
