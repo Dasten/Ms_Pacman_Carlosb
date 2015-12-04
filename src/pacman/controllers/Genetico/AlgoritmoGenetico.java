@@ -184,47 +184,60 @@ public class AlgoritmoGenetico {
         float fitnessObjetivo = 600f;
         float currentFitness = 0f;
 
-        System.out.println("Evaluamos la primera generacion...");
+        System.out.println("Que quieres hacer: (Selecciona una opcion 0/1");
+        System.out.println("0 - Ejecutar el algoritmo genetico - Pobacion: " + numPoblacion);
+        System.out.println("1 - Cargar el mejor individuo de la poblacion y lanzar el juego");
+        int opcionSeleccionada = Integer.parseInt(System.console().readLine());
 
-        // Evlauamos la poblacion por primera vez antes de empezar a iterar
-        poblacion.evaluarGeneracion();
-        currentFitness = poblacion.getMaxFitnessPoblacion();
+        if(opcionSeleccionada == 0) {
 
-        System.out.println("Entramos en el while...");
-
-        //Condicion de parada, mientras que el fitness del mejor elemento de la poblacion no sea 600 o mayor, o si llegamos a 10 generaciones
-        while ((numGeneraciones < numMaxGeneraciones) && (currentFitness < fitnessObjetivo)){
-
-            System.out.println("Generamos nueva generacion...");
-            // Generamos la nueva generacion de genotipos (los hijos resultantes de los elemtnos crien)
-            ArrayList<Genotipo> nuevaGeneracion = poblacion.generarSiguienteGeneracion();
-
-            System.out.println("Ordenamos la generacion segun su fitness...");
-            // Ordenamos nuestra poblacion segun su Fitness
-            ordenarPoblacionByFitness(poblacion.getPoblacion());
-
-            System.out.println("Reemplazamos generacion...");
-            // Reemplazamos la generacionCreada (hijos) en la poblacion (quitamos los individuos con menos fitness)
-            poblacion.reemplazarGeneracion(nuevaGeneracion);
-
-            System.out.println("Evaluamos la generacion...");
-            // Volvemos a evaluar a la generacion para obtener los fitness de los hijos creados
+            // Evlauamos la poblacion por primera vez antes de empezar a iterar
             poblacion.evaluarGeneracion();
-
-            // Aumentamos la cantidad de generaciones creadas
-            numGeneraciones++;
-
             currentFitness = poblacion.getMaxFitnessPoblacion();
 
-            System.out.println("Generacion: " + numGeneraciones + " Mejor Fitness: " + currentFitness);
+            //Condicion de parada, mientras que el fitness del mejor elemento de la poblacion no sea 600 o mayor, o si llegamos a 10 generaciones
+            while ((numGeneraciones < numMaxGeneraciones) && (currentFitness < fitnessObjetivo)) {
+
+                // Generamos la nueva generacion de genotipos (los hijos resultantes de los elemtnos crien)
+                //System.out.println("Generamos nueva generacion...");
+                ArrayList<Genotipo> nuevaGeneracion = poblacion.generarSiguienteGeneracion();
+
+                // Ordenamos nuestra poblacion segun su Fitness
+                //System.out.println("Ordenamos la generacion segun su fitness...");
+                ordenarPoblacionByFitness(poblacion.getPoblacion());
+
+                // Reemplazamos la generacionCreada (hijos) en la poblacion (quitamos los individuos con menos fitness)
+                //System.out.println("Reemplazamos generacion...");
+                poblacion.reemplazarGeneracion(nuevaGeneracion);
+
+                //System.out.println("Evaluamos la generacion...");
+                // Volvemos a evaluar a la generacion para obtener los fitness de los hijos creados
+                poblacion.evaluarGeneracion();
+
+                // Aumentamos la cantidad de generaciones creadas
+                numGeneraciones++;
+
+                // Cambiamos el currentFitness al del mejor de la poblacion actual
+                currentFitness = poblacion.getMaxFitnessPoblacion();
+
+                System.out.println("Generacion: " + numGeneraciones + " Mejor Fitness: " + currentFitness);
+            }
+
+            Genotipo mejorIndividuo = poblacion.getGenotipoOfIndividuo(numPoblacion - 1);
+            System.out.println("El mejor individuo de la poblacion es: ");
+            mejorIndividuo.printCromosoma();
+            mejorIndividuo.printFenotipo();
+
+            // TO-DO Guardar el genotipo en un txt para cargarlo posteriormente
+            // llamar a la funcion para guardar el genitupo en un txt
+            // preguntar si quiere ejecutarlo y verlo por pantalla
+            // llamar a una funcion con el genotipo y lo ejecute por pantalla
+
+        }else{
+
+            // llamar a la funcion que cargar el genotipo por pantalla
+            // llamar a una funcion con el genotipo y lo ejecute por pantalla
+
         }
-
-        Genotipo mejorIndividuo = poblacion.getGenotipoOfIndividuo(numPoblacion- 1);
-        System.out.println("El mejor individuo de la poblacion es: ");
-        mejorIndividuo.printCromosoma();
-        mejorIndividuo.printFenotipo();
-
-        // TO-DO Guardar el genotipo en un txt para cargarlo posteriormente
-
     }
 }
