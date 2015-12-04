@@ -14,7 +14,7 @@ import java.util.concurrent.SynchronousQueue;
 
 public class Genotipo {
 
-    static int NUM_EVALUACIONES = 10;
+    static int NUM_EVALUACIONES = 5;
 
     protected float mFitness;
     protected float mCromosoma[];
@@ -89,6 +89,8 @@ public class Genotipo {
         mFitness = (float)exec.runGenetico(controlador, new StarterGhosts(), NUM_EVALUACIONES);
         mFenotipo = controlador.getEngine();
         evaluado = true;
+
+        //System.out.println("Genotipo evaluado: " + this.toString());
     }
 
     // Para mutar obtendremos un numero aleatorio de cromosomas (entre 1 y 36)

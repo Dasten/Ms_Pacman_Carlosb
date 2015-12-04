@@ -4,6 +4,7 @@ package pacman.controllers.Genetico;
 import pacman.Executor;
 import pacman.controllers.examples.StarterGhosts;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -12,7 +13,7 @@ import java.util.Random;
 public class AlgoritmoGenetico {
 
     static int NUM_CROMOSOMA = 36;
-    static int NUM_POBLACION = 60; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
+    static int NUM_POBLACION = 10; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
 
     ArrayList<Genotipo> mPoblacion;
 
@@ -47,6 +48,21 @@ public class AlgoritmoGenetico {
         });
     }
 
+    public void reemplazarGeneracion(ArrayList<Genotipo> nuevaGeneracion){
+
+        // Eliminamos los elementos de la generacion con peor fitness
+        // (eliminamos tantos individuos como hijos hayamos creado)
+        for(int i = 0; i < nuevaGeneracion.size(); i++){
+            mPoblacion.remove(i);
+        }
+
+        // Ahora insertamos los nuevos individuos (hijos) en la poblacion
+        for(int i = 0; i < nuevaGeneracion.size(); i++){
+            mPoblacion.add(nuevaGeneracion.get(i));
+        }
+
+    }
+
     // Obtenemos una lista con los hijos de la nueva generacion
     public ArrayList<Genotipo> generarSiguienteGeneracion(){
 
@@ -55,62 +71,92 @@ public class AlgoritmoGenetico {
         float probMutacion = 0.1f;
         Random rand = new Random();
 
-        for(int i = 0; i < listaPadres.size(); i+=2){
-            Genotipo[] hijos = reproducir(listaPadres.get(i), listaPadres.get(i+1));
+        for(int i = 0; i < listaPadres.size(); i+= 2){
+
+            ArrayList<Genotipo> hijos = reproducir(listaPadres.get(i), listaPadres.get(i + 1));
 
             // Si obtenemos un random menor que la probabilidad mutamos al hijo 1
             if(((rand.nextInt((100-0)+1) + 0) / 100.0f) <= probMutacion){
-                hijos[0].mutar();
+                hijos.get(0).mutar();
             }
 
             // Si obtenemos un random menor que la probabilidad mutamos al hijo 2
             if(((rand.nextInt((100-0)+1) + 0) / 100.0f) <= probMutacion){
-                hijos[1].mutar();
+                hijos.get(1).mutar();
             }
 
-            nuevaGeneracion.add(hijos[0]);
-            nuevaGeneracion.add(hijos[1]);
+            nuevaGeneracion.add(hijos.get(0));
+            nuevaGeneracion.add(hijos.get(1));
         }
 
         return nuevaGeneracion;
     }
 
-    // A la hora de Cruzar los individuos usamos una mascara de bits y combinamos los genotipos de los padres
-    public Genotipo[] reproducir(Genotipo padre, Genotipo madre){
 
-        Genotipo[] hijos = new Genotipo[2];
+    // A la hora de Cruzar los individuos usamos una mascara de bits y combinamos los genotipos de los padres
+    public ArrayList<Genotipo> reproducir(Genotipo padre, Genotipo madre){
+
+        ArrayList<Genotipo> hijos = new ArrayList<Genotipo>();
         float r = 0.4f;
+        Genotipo hijo0 = new Genotipo();
+        Genotipo hijo1 = new Genotipo();
+
+
 
         // Creamos los hijos por Cruce Aritmetico
         for(int i = 0; i < NUM_CROMOSOMA; i++){
-            hijos[0].setGenCromosoma(i, (((padre.getGenCromosoma(i) * r) + (madre.getGenCromosoma(i) * (1-r)))));
-            hijos[0].setGenCromosoma(i, (((padre.getGenCromosoma(i) * (1 - r)) + (madre.getGenCromosoma(i) * r))));
+            float gen1 = (     (padre.getGenCromosoma(i) * r) +  (madre.getGenCromosoma(i) * (1 - r))     );
+            float gen2 = (     (padre.getGenCromosoma(i) * (1 - r) + (madre.getGenCromosoma(i) * r))      );
+
+            //System.out.println("Creamos los hijos");
+            //System.out.print("imprimimos Genotipo de hijo 0: " + hijos[0].toString());
+            //System.out.print("imprimimos Genotipo de hijo 1: " + hijos[1].toString());
+
+            //System.out.println("CROMOSOMA Nº: " + i + " GEN 1: " + gen1 + " GEN 2: " + gen2);
+
+            hijo0.setGenCromosoma(i, gen1);
+            hijo1.setGenCromosoma(i, gen2);
         }
 
-        return hijos;
-
-
-        // #####################
-        /*
-        int[] mascara = crearMascaraGenotipo();
-        Genotipo[] hijos = new Genotipo[2];
-
-        // Generamos el primer hijo con la mascara - si el cromosoma de la mascara es 1 cogemos el de la madre y si es 0 el del padre
-        // Generamos el segundo hijo con la mascara - si el cromosoma de la mascara es 1 cogemos el del padre y si es 0 el de la madre
-        for(int i = 0; i < NUM_CROMOSOMA; i++){
-            if(mascara[i] == 1){
-                hijos[0].setGenCromosoma(i, madre.getGenCromosoma(i));
-                hijos[1].setGenCromosoma(i, padre.getGenCromosoma(i));
-            }else{
-                hijos[0].setGenCromosoma(i, padre.getGenCromosoma(i));
-                hijos[1].setGenCromosoma(i, madre.getGenCromosoma(i));
-            }
-        }
-
+        hijos.add(hijo0);
+        hijos.add(hijo1);
 
         return hijos;
-       */
     }
+
+
+
+    /*
+    // A la hora de Cruzar los individuos usamos una mascara de bits y combinamos los genotipos de los padres
+    public Genotipo[] reproducir(Genotipo padre, Genotipo madre){
+
+        int numeroHijos = 2;
+        Genotipo[] hijos = new Genotipo[numeroHijos];
+        float r = 0.4f;
+
+        //Inicializamos los hijos con el constructor por defecto
+        for(int i = 0; i < numeroHijos; i++){
+            hijos[i] = new Genotipo();
+        }
+
+        // Creamos los hijos por Cruce Aritmetico
+        for(int i = 0; i < NUM_CROMOSOMA; i++){
+            float gen1 = (     (padre.getGenCromosoma(i) * r) +  (madre.getGenCromosoma(i) * (1 - r))     );
+            float gen2 = (     (padre.getGenCromosoma(i) * (1 - r) + (madre.getGenCromosoma(i) * r))      );
+
+            System.out.println("Creamos los hijos");
+            System.out.print("imprimimos Genotipo de hijo 0: " + hijos[0].toString());
+            System.out.print("imprimimos Genotipo de hijo 1: " + hijos[1].toString());
+
+            hijos[0].setGenCromosoma(i, gen1);
+            hijos[1].setGenCromosoma(i, gen2);
+        }
+
+        return hijos;
+    }
+*/
+
+
 
     // Creamos una mascara aleatoria para el cruce de dos individuos
     private int[] crearMascaraGenotipo(){
@@ -141,6 +187,10 @@ public class AlgoritmoGenetico {
         // por lo tanto la mitad de la poblacion seran padres
         int numIndividuosSelec = mPoblacion.size() / 2;
 
+        if(numIndividuosSelec % 2 != 0){
+            numIndividuosSelec--;
+        }
+
         for(int i = 0; i < numIndividuosSelec; i++){
             Genotipo individuo1 = copiaPobacion.remove((rand.nextInt((copiaPobacion.size() - 1) - 0 + 1) + 0));
             Genotipo individuo2 = copiaPobacion.remove((rand.nextInt((copiaPobacion.size() - 1) - 0 + 1) + 0));
@@ -154,23 +204,6 @@ public class AlgoritmoGenetico {
         }
 
         return listaPadres;
-
-        // ####################33 ESTO TENGO QUE AMBIARLO POR EL METODO DE LAS DIAPOS (HACIENDO LA MEDIA)
-        /*
-        int numIndividuosSelec = NUM_POBLACION / 4;
-        if(numIndividuosSelec % 2 != 0){
-            numIndividuosSelec--;
-        }
-
-        ArrayList<Genotipo> listaPadres = new ArrayList<Genotipo>();
-
-        for(int i = 0; i < numIndividuosSelec; i++){
-            listaPadres.add(mPoblacion.get(mPoblacion.size()-i));
-            listaPadres.add(mPoblacion.get(i));
-        }
-
-        return listaPadres;
-    */
     }
 
     public ArrayList<Genotipo> getPoblacion() {
@@ -191,71 +224,46 @@ public class AlgoritmoGenetico {
 
     public static void main(String[] args ) {
 
-
         int numPoblacion = NUM_POBLACION;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(numPoblacion);
         int numGeneraciones = 0;
         float fitnessObjetivo = 600f;
+        float currentFitness = 0f;
+
+        System.out.println("Evaluamos la primera generacion...");
 
         // Evlauamos la poblacion por primera vez antes de empezar a iterar
         poblacion.evaluarGeneracion();
+        currentFitness = poblacion.getMaxFitnessPoblacion();
+
+        System.out.println("Entramos en el while...");
 
         //Condicion de parada, mientras que el fitness del mejor elemento de la poblacion no sea 600 o mayor, o si llegamos a 10 generaciones
-        while ( (numGeneraciones < 10) || (poblacion.getMaxFitnessPoblacion() < fitnessObjetivo)){
+        while ((numGeneraciones < 10) && (currentFitness < fitnessObjetivo)){
 
-
-
-
+            System.out.println("Generamos nueva generacion...");
+            // Generamos la nueva generacion de genotipos (los hijos resultantes de los elemtnos crien)
             ArrayList<Genotipo> nuevaGeneracion = poblacion.generarSiguienteGeneracion();
 
-                // Ordenamos la poblacion segun su fitness
-                ordenarPoblacionByFitness(Poblacion);
+            System.out.println("Ordenamos la generacion segun su fitness...");
+            // Ordenamos nuestra poblacion segun su Fitness
+            ordenarPoblacionByFitness(poblacion.getPoblacion());
 
-        //Eliminamos tantos elementos de la poblacion como nuevos elementos hayamos genrado
-        //Eliminamos los elementos con peor fitness de la poblacion
-        for(int i = 0; i < nuevaGenracion.size(); i++){
-            mPoblacion.remove(0);
+            System.out.println("Reemplazamos generacion...");
+            // Reemplazamos la generacionCreada (hijos) en la poblacion (quitamos los individuos con menos fitness)
+            poblacion.reemplazarGeneracion(nuevaGeneracion);
+
+            System.out.println("Evaluamos la generacion...");
+            // Volvemos a evaluar a la generacion para obtener los fitness de los hijos creados
+            poblacion.evaluarGeneracion();
+
+            // Aumentamos la cantidad de generaciones creadas
+            numGeneraciones++;
+
+            currentFitness = poblacion.getMaxFitnessPoblacion();
+
+            System.out.println("Generacion: " + numGeneraciones + " Mejor Fitness: " + currentFitness);
         }
-
-        // Sumamos uno a las veces que han evaluado los individuos que quedan
-        for(int i = 0; i < mPoblacion.size(); i++){
-            mPoblacion.get(i).evaluarGenotipo();
-        }
-
-        // Metemos la nueva generacion en la poblacion
-        for(int i = 0; i < nuevaGenracion.size(); i++){
-            mPoblacion.add(nuevaGenracion.get(i));
-        }
-        */
-
-
-
-
-
-
-
-
-
-        }
-
-
-
-
-
-
-        // Ejecutamos un numero nControlador de veces el juego pasandole cada uno de los individuos de la poblacion
-        for(int i = 0; i < poblacion.getNumPoblacion(); i++){
-
-        }
-
-
-        /*
-        ordenarPoblacionByFitness(poblacion.getPoblacion());
-        for(int i = 0; i < poblacion.getNumPoblacion(); i++){
-            System.out.println("Individuo " + i + " Fitness: " + poblacion.getGenotipoOfIndividuo(i).getFitness());
-        }
-        */
-
 
     }
 }

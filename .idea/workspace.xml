@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c9e037c9-bb8d-488a-b778-fedee33d64b3" name="Default" comment="Refactor Ok - Arreglada la funciond e cruce, ahora los hijos se generan con un cruce aritmetico">
+    <list default="true" id="c9e037c9-bb8d-488a-b778-fedee33d64b3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java" afterPath="$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java" />
     </list>
     <ignored path="Ms_Pacman.iws" />
@@ -39,22 +38,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Genotipo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="69" column="49" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1637#1638#0" expanded="true" />
-                <element signature="e#1688#1689#0" expanded="true" />
-                <element signature="e#3373#3374#0" expanded="true" />
-                <element signature="e#3404#3405#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ControladorFuzzyGen.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/ControladorFuzzyGen.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -74,22 +57,37 @@
       <file leaf-file-name="AlgoritmoGenetico.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61778843">
-              <caret line="83" column="49" selection-start-line="83" selection-start-column="49" selection-end-line="83" selection-end-column="49" />
+            <state vertical-scroll-proportion="0.63221157">
+              <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1096#1295#0" expanded="true" />
-                <element signature="e#1294#1295#0" expanded="true" />
-                <element signature="e#1557#1567#0" expanded="true" />
-                <element signature="e#4160#4161#0" expanded="true" />
-                <element signature="e#4200#4201#0" expanded="true" />
-                <element signature="e#4256#4257#0" expanded="true" />
-                <element signature="e#4300#4301#0" expanded="true" />
-                <element signature="e#4451#4461#0" expanded="true" />
-                <element signature="e#5959#5960#0" expanded="true" />
-                <element signature="e#5992#5993#0" expanded="true" />
-                <element signature="e#6056#6057#0" expanded="true" />
-                <element signature="e#6100#6101#0" expanded="true" />
+                <element signature="e#1128#1327#0" expanded="true" />
+                <element signature="e#1326#1327#0" expanded="true" />
+                <element signature="e#2106#2116#0" expanded="true" />
+                <element signature="e#3143#3153#0" expanded="true" />
+                <element signature="e#5601#5602#0" expanded="true" />
+                <element signature="e#5641#5642#0" expanded="true" />
+                <element signature="e#5697#5698#0" expanded="true" />
+                <element signature="e#5741#5742#0" expanded="true" />
+                <element signature="e#5892#5902#0" expanded="true" />
+                <element signature="e#6947#6948#0" expanded="true" />
+                <element signature="e#6980#6981#0" expanded="true" />
+                <element signature="e#7044#7045#0" expanded="true" />
+                <element signature="e#7088#7089#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Genotipo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1636#1637#0" expanded="true" />
+                <element signature="e#1687#1688#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -410,7 +408,7 @@
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager" selected="Application.Executor">
+  <component name="RunManager" selected="Application.Genetico">
     <configuration default="false" name="Executor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -829,7 +827,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449145752536</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Refactor Ok - Arreglada la funciond e cruce, ahora los hijos se generan con un cruce aritmetico">
+      <created>1449146185277</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1449146185277</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -840,10 +844,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32608697" sideWeight="0.4838946" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.310559" sideWeight="0.51098096" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.310559" sideWeight="0.45607615" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.310559" sideWeight="0.5527086" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.310559" sideWeight="0.54392385" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23426062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -852,7 +856,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39819586" sideWeight="0.49" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39751554" sideWeight="0.4838946" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -896,7 +900,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="16" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -905,35 +909,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/HumanController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/ControladorBorroso.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/game/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="208" column="62" selection-start-line="208" selection-start-column="55" selection-end-line="208" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pacman/game/internal/Ghost.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1237,23 +1212,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pacman/Executor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="514" column="9" selection-start-line="514" selection-start-column="9" selection-end-line="514" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pacman/controllers/QLearning/QLearner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.5120193">
           <caret line="41" column="29" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
           <folding>
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="false" />
+            <element signature="e#650#651#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1280,38 +1245,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pacman/Executor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="514" column="9" selection-start-line="514" selection-start-column="9" selection-end-line="514" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_55/jre/lib/rt.jar!/sun/reflect/DelegatingMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5555553">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_55/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2222223">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_55/src.zip!/java/lang/reflect/Method.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33173078">
+          <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.7.0_55/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33173078">
+          <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/Genotipo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="49" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
+          <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1637#1638#0" expanded="true" />
-            <element signature="e#1688#1689#0" expanded="true" />
-            <element signature="e#3373#3374#0" expanded="true" />
-            <element signature="e#3404#3405#0" expanded="true" />
+            <element signature="e#1636#1637#0" expanded="true" />
+            <element signature="e#1687#1688#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pacman/controllers/Genetico/AlgoritmoGenetico.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61778843">
-          <caret line="83" column="49" selection-start-line="83" selection-start-column="49" selection-end-line="83" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.63221157">
+          <caret line="79" column="37" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1096#1295#0" expanded="true" />
-            <element signature="e#1294#1295#0" expanded="true" />
-            <element signature="e#1557#1567#0" expanded="true" />
-            <element signature="e#4160#4161#0" expanded="true" />
-            <element signature="e#4200#4201#0" expanded="true" />
-            <element signature="e#4256#4257#0" expanded="true" />
-            <element signature="e#4300#4301#0" expanded="true" />
-            <element signature="e#4451#4461#0" expanded="true" />
-            <element signature="e#5959#5960#0" expanded="true" />
-            <element signature="e#5992#5993#0" expanded="true" />
-            <element signature="e#6056#6057#0" expanded="true" />
-            <element signature="e#6100#6101#0" expanded="true" />
+            <element signature="e#1128#1327#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#2106#2116#0" expanded="true" />
+            <element signature="e#3143#3153#0" expanded="true" />
+            <element signature="e#5601#5602#0" expanded="true" />
+            <element signature="e#5641#5642#0" expanded="true" />
+            <element signature="e#5697#5698#0" expanded="true" />
+            <element signature="e#5741#5742#0" expanded="true" />
+            <element signature="e#5892#5902#0" expanded="true" />
+            <element signature="e#6947#6948#0" expanded="true" />
+            <element signature="e#6980#6981#0" expanded="true" />
+            <element signature="e#7044#7045#0" expanded="true" />
+            <element signature="e#7088#7089#0" expanded="true" />
           </folding>
         </state>
       </provider>
