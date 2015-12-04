@@ -1,10 +1,5 @@
 package pacman.controllers.Genetico;
 
-
-import pacman.Executor;
-import pacman.controllers.examples.StarterGhosts;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -101,18 +96,10 @@ public class AlgoritmoGenetico {
         Genotipo hijo0 = new Genotipo();
         Genotipo hijo1 = new Genotipo();
 
-
-
         // Creamos los hijos por Cruce Aritmetico
         for(int i = 0; i < NUM_CROMOSOMA; i++){
             float gen1 = (     (padre.getGenCromosoma(i) * r) +  (madre.getGenCromosoma(i) * (1 - r))     );
             float gen2 = (     (padre.getGenCromosoma(i) * (1 - r) + (madre.getGenCromosoma(i) * r))      );
-
-            //System.out.println("Creamos los hijos");
-            //System.out.print("imprimimos Genotipo de hijo 0: " + hijos[0].toString());
-            //System.out.print("imprimimos Genotipo de hijo 1: " + hijos[1].toString());
-
-            //System.out.println("CROMOSOMA Nº: " + i + " GEN 1: " + gen1 + " GEN 2: " + gen2);
 
             hijo0.setGenCromosoma(i, gen1);
             hijo1.setGenCromosoma(i, gen2);
@@ -123,40 +110,6 @@ public class AlgoritmoGenetico {
 
         return hijos;
     }
-
-
-
-    /*
-    // A la hora de Cruzar los individuos usamos una mascara de bits y combinamos los genotipos de los padres
-    public Genotipo[] reproducir(Genotipo padre, Genotipo madre){
-
-        int numeroHijos = 2;
-        Genotipo[] hijos = new Genotipo[numeroHijos];
-        float r = 0.4f;
-
-        //Inicializamos los hijos con el constructor por defecto
-        for(int i = 0; i < numeroHijos; i++){
-            hijos[i] = new Genotipo();
-        }
-
-        // Creamos los hijos por Cruce Aritmetico
-        for(int i = 0; i < NUM_CROMOSOMA; i++){
-            float gen1 = (     (padre.getGenCromosoma(i) * r) +  (madre.getGenCromosoma(i) * (1 - r))     );
-            float gen2 = (     (padre.getGenCromosoma(i) * (1 - r) + (madre.getGenCromosoma(i) * r))      );
-
-            System.out.println("Creamos los hijos");
-            System.out.print("imprimimos Genotipo de hijo 0: " + hijos[0].toString());
-            System.out.print("imprimimos Genotipo de hijo 1: " + hijos[1].toString());
-
-            hijos[0].setGenCromosoma(i, gen1);
-            hijos[1].setGenCromosoma(i, gen2);
-        }
-
-        return hijos;
-    }
-*/
-
-
 
     // Creamos una mascara aleatoria para el cruce de dos individuos
     private int[] crearMascaraGenotipo(){
@@ -227,6 +180,7 @@ public class AlgoritmoGenetico {
         int numPoblacion = NUM_POBLACION;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(numPoblacion);
         int numGeneraciones = 0;
+        int numMaxGeneraciones = 1;
         float fitnessObjetivo = 600f;
         float currentFitness = 0f;
 
@@ -239,7 +193,7 @@ public class AlgoritmoGenetico {
         System.out.println("Entramos en el while...");
 
         //Condicion de parada, mientras que el fitness del mejor elemento de la poblacion no sea 600 o mayor, o si llegamos a 10 generaciones
-        while ((numGeneraciones < 10) && (currentFitness < fitnessObjetivo)){
+        while ((numGeneraciones < numMaxGeneraciones) && (currentFitness < fitnessObjetivo)){
 
             System.out.println("Generamos nueva generacion...");
             // Generamos la nueva generacion de genotipos (los hijos resultantes de los elemtnos crien)
@@ -264,6 +218,13 @@ public class AlgoritmoGenetico {
 
             System.out.println("Generacion: " + numGeneraciones + " Mejor Fitness: " + currentFitness);
         }
+
+        Genotipo mejorIndividuo = poblacion.getGenotipoOfIndividuo(numPoblacion- 1);
+        System.out.println("El mejor individuo de la poblacion es: ");
+        mejorIndividuo.printCromosoma();
+        mejorIndividuo.printFenotipo();
+
+        // TO-DO Guardar el genotipo en un txt para cargarlo posteriormente
 
     }
 }

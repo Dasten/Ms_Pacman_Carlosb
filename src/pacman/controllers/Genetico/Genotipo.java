@@ -1,16 +1,13 @@
 package pacman.controllers.Genetico;
 
-
 import com.fuzzylite.Engine;
 import com.fuzzylite.rule.Rule;
 import com.fuzzylite.rule.RuleBlock;
 import pacman.Executor;
 import pacman.controllers.examples.StarterGhosts;
-
-import javax.print.attribute.standard.MediaSize;
 import java.util.Arrays;
 import java.util.Random;
-import java.util.concurrent.SynchronousQueue;
+
 
 public class Genotipo {
 
@@ -89,8 +86,6 @@ public class Genotipo {
         mFitness = (float)exec.runGenetico(controlador, new StarterGhosts(), NUM_EVALUACIONES);
         mFenotipo = controlador.getEngine();
         evaluado = true;
-
-        //System.out.println("Genotipo evaluado: " + this.toString());
     }
 
     // Para mutar obtendremos un numero aleatorio de cromosomas (entre 1 y 36)
@@ -109,14 +104,19 @@ public class Genotipo {
     }
 
     void printCromosoma(){
+
+        System.out.print(this.toString());
+
+        /*
         for(int i = 0; i < mCromosoma.length; i++){
             System.out.print(mCromosoma[i] + " ");
         }
         System.out.print("\n");
+        */
     }
 
     public String toString(){
-        String cromosoma = "";
+        String cromosoma = "Genotipo: ";
         for(int i = 0; i < mCromosoma.length; i++){
             cromosoma += mCromosoma[i] + " ";
         }
@@ -130,11 +130,18 @@ public class Genotipo {
     }
 
     public void printFenotipo(){
+        System.out.println("Fenotipo: ");
+        System.out.println("Distancia - CERCA - (" + mCromosoma[0] + "," + mCromosoma[1] + "," + mCromosoma[2] + "," + mCromosoma[3] + ")");
+        System.out.println("Distancia - NORMAL - (" + mCromosoma[4] + "," + mCromosoma[5] + "," + mCromosoma[6] + "," + mCromosoma[7] + ")");
+        System.out.println("Distancia - LEJOR - (" + mCromosoma[8] + "," + mCromosoma[9] + "," + mCromosoma[10] + "," + mCromosoma[11] + ")");
 
+        System.out.println("Tiempo - CERCA - (" + mCromosoma[12] + "," + mCromosoma[13] + "," + mCromosoma[14] + "," + mCromosoma[15] + ")");
+        System.out.println("Tiempo - NORMAL - (" + mCromosoma[16] + "," + mCromosoma[17] + "," + mCromosoma[18] + "," + mCromosoma[19] + ")");
+        System.out.println("Tiempo - MUCHO - (" + mCromosoma[20] + "," + mCromosoma[21] + "," + mCromosoma[22] + "," + mCromosoma[23] + ")");
 
-        // Print todos los fenotipos
-        // Atributo Distancia valor Cerca: (XX,XX,XX,XX)
-        // [...]
+        System.out.println("DistanciaPowerPills - CERCA - (" + mCromosoma[24] + "," + mCromosoma[25] + "," + mCromosoma[26] + "," + mCromosoma[27] + ")");
+        System.out.println("DistanciaPowerPills - NORMAL - (" + mCromosoma[28] + "," + mCromosoma[29] + "," + mCromosoma[30] + "," + mCromosoma[31] + ")");
+        System.out.println("DistanciaPowerPills - LEJOS - (" + mCromosoma[32] + "," + mCromosoma[33] + "," + mCromosoma[34] + "," + mCromosoma[35] + ")");
 
         RuleBlock reglas = mFenotipo.getRuleBlock(0);
         for (Rule regla : reglas.getRules()) {

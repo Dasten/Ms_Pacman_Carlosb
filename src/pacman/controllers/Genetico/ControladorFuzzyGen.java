@@ -183,11 +183,7 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
         String estrategiaResultado = "";
         MOVE direccionPacMan = MOVE.NEUTRAL;
-
-        //ControladorFuzzyGen controlador = new ControladorFuzzyGen();
-        //Engine engine = new Engine();
         engine = new Engine();
-        //controlador.configure(engine);
         configure(engine);
 
 
@@ -277,9 +273,6 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
         return fantasma;
     }
-
-
-
 
 
     // Funcion para obtener la direccion que va a seguir PacMan dependiendo de la estrategia obtenida con el Motor Borroso
