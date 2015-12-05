@@ -1,14 +1,21 @@
 package pacman.controllers.Genetico;
 
+import pacman.Executor;
+import pacman.controllers.examples.StarterGhosts;
+
+import javax.swing.plaf.synth.SynthTextAreaUI;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
+import java.util.regex.PatternSyntaxException;
 
 public class AlgoritmoGenetico {
 
     static int NUM_CROMOSOMA = 36;
-    static int NUM_POBLACION = 10; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
+    static int NUM_POBLACION = 20; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
+    static String FICHERO = "MejorIndividuo.txt";
 
     ArrayList<Genotipo> mPoblacion;
 
@@ -175,21 +182,103 @@ public class AlgoritmoGenetico {
         return (mPoblacion.get(mPoblacion.size() - 1).getFitness());
     }
 
-    public static void main(String[] args ) {
+    public static void  guardarIndividuo(Genotipo individuo) {
+
+        String infoIndividuo = individuo.getGenotipoFormateado();
+
+        try {
+
+            File file = new File(FICHERO);
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(infoIndividuo);
+            bw.write(individuo.getFitness()+"");
+            bw.close();
+
+            System.out.println("Se ha guardado el mejor individuo de la poblacion en '" + FICHERO + "'");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Genotipo cargarIndividuo() throws IOException {
+
+        Genotipo individuoCargado = new Genotipo();
+        String[] cromosoma = null;
+
+        String genotipoLeido = null;
+        File file = new File(FICHERO);
+        FileReader reader = null;
+        try {
+            reader = new FileReader(file);
+            char[] chars = new char[(int) file.length()];
+            reader.read(chars);
+            genotipoLeido = new String(chars);
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if(reader !=null){reader.close();}
+        }
+
+        try {
+            cromosoma = genotipoLeido.split("\\s+");
+        } catch (PatternSyntaxException ex) {
+            System.out.println("ERROR al parsear el cromosoma cargado.");
+        }
+
+        for(int i = 0; i < individuoCargado.mCromosoma.length; i++){
+            individuoCargado.setGenCromosoma(i, Float.parseFloat(cromosoma[i]));
+        }
+
+        float fitness = Float.parseFloat(cromosoma[cromosoma.length - 1]);
+        individuoCargado.setFitness(fitness);
+
+        return individuoCargado;
+    }
+
+    public static void playGameIndividuo(Genotipo individuo){
+        Executor exec = new Executor();
+        ControladorFuzzyGen controlador = new ControladorFuzzyGen(individuo);
+        int delay = 10;
+        exec.runGame(controlador, new StarterGhosts(), true, delay);
+    }
+
+    public static void main(String[] args) throws IOException {
 
         int numPoblacion = NUM_POBLACION;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(numPoblacion);
         int numGeneraciones = 0;
-        int numMaxGeneraciones = 1;
+        int numMaxGeneraciones = 10;
         float fitnessObjetivo = 600f;
         float currentFitness = 0f;
 
         System.out.println("Que quieres hacer: (Selecciona una opcion 0/1");
         System.out.println("0 - Ejecutar el algoritmo genetico - Pobacion: " + numPoblacion);
         System.out.println("1 - Cargar el mejor individuo de la poblacion y lanzar el juego");
-        int opcionSeleccionada = Integer.parseInt(System.console().readLine());
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int opcionSeleccionada = 0;
+
+
+        try {
+            opcionSeleccionada = Integer.parseInt(reader.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         if(opcionSeleccionada == 0) {
+
+            System.out.println("Iniciando el algoritmo genetico...");
+
+            long start_time = System.nanoTime();
 
             // Evlauamos la poblacion por primera vez antes de empezar a iterar
             poblacion.evaluarGeneracion();
@@ -223,21 +312,45 @@ public class AlgoritmoGenetico {
                 System.out.println("Generacion: " + numGeneraciones + " Mejor Fitness: " + currentFitness);
             }
 
+            long end_time = System.nanoTime();
+            double tiempo = (((end_time - start_time)/1e6)/1000);
+            System.out.printf("Tiempo: %.2f segundos%n", tiempo);
+
             Genotipo mejorIndividuo = poblacion.getGenotipoOfIndividuo(numPoblacion - 1);
             System.out.println("El mejor individuo de la poblacion es: ");
             mejorIndividuo.printCromosoma();
             mejorIndividuo.printFenotipo();
 
-            // TO-DO Guardar el genotipo en un txt para cargarlo posteriormente
-            // llamar a la funcion para guardar el genitupo en un txt
-            // preguntar si quiere ejecutarlo y verlo por pantalla
-            // llamar a una funcion con el genotipo y lo ejecute por pantalla
+            guardarIndividuo(mejorIndividuo);
+
+            System.out.println("Quieres lanzar el juego con el mejor individuo de la poblacion? s/n");
+            String respuesta = reader.readLine();
+
+            if(respuesta.equals("s")){
+                playGameIndividuo(mejorIndividuo);
+            }
 
         }else{
 
-            // llamar a la funcion que cargar el genotipo por pantalla
-            // llamar a una funcion con el genotipo y lo ejecute por pantalla
+            Genotipo mejorIndividuo = cargarIndividuo();
+            System.out.println("El mejor individuo de la poblacion es: ");
+            mejorIndividuo.printCromosoma();
+            playGameIndividuo(mejorIndividuo);
 
         }
+
+
+/*
+        Genotipo test = new Genotipo();
+        test.randomizeCromosoma();
+        test.setGenCromosoma(0, 0.99f);
+        test.setFitness(757.96f);
+        test.printCromosoma();
+        guardarIndividuo(test);
+        Genotipo cargado = cargarIndividuo();
+        System.out.println("Imprimimos el individuo cargado");
+        cargado.printCromosoma();
+*/
+
     }
 }

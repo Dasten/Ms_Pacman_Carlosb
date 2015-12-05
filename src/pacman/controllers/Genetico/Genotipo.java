@@ -149,4 +149,12 @@ public class Genotipo {
         }
     }
 
+    public String getGenotipoFormateado(){
+        String formato = "";
+        for(int i = 0; i < mCromosoma.length; i++){
+            formato += mCromosoma[i] + " ";
+        }
+        return formato;
+    }
+
 }
