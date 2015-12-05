@@ -14,25 +14,24 @@ import com.fuzzylite.term.Trapezoid;
 import com.fuzzylite.variable.InputVariable;
 import com.fuzzylite.variable.OutputVariable;
 import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.Random;
 
 import static pacman.game.Constants.*;
 
 
 public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
-    Engine engine;
-    RuleBlock reglas;
-    Genotipo individuo;
+    Engine engine; // Motor de logica borrosa
+    RuleBlock reglas; // Reglas de nuestro motor
+    Genotipo individuo; // Individuo usado para establecer las ecuaciones de las rectas de los valores segun su genotipo
 
     public ControladorFuzzyGen(Genotipo individuo) {
         this.individuo = individuo;
     }
 
+    // Funcion para configurar el motor de logica borrosa
     public void configure(Engine engine){
 
-        float[] genotivoIndividuo = individuo.getmCromosoma();
+        float[] genotivoIndividuo = individuo.getmCromosoma(); // Genotipo del individuo usado para configurar el motor
 
         engine.setName("Estrategia");
 
@@ -131,6 +130,7 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
 
     }
 
+    // Funcion para imprimir las reglas del motor borroso por pantalla
     public void printReglas(){
         for (Rule regla : reglas.getRules()) {
             System.out.println(regla.toString());
@@ -180,13 +180,10 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
         int tiempo = getTiempoToFantasma(game);
         int distanciaPowerPills = getDistanciaToPP(game);
 
-
         String estrategiaResultado = "";
         MOVE direccionPacMan = MOVE.NEUTRAL;
         engine = new Engine();
         configure(engine);
-
-
 
         StringBuilder status = new StringBuilder();
         if (!engine.isReady(status)){
@@ -210,19 +207,22 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
         return direccionPacMan;
     }
 
-
+    // Funcion para obtener la distancia al fantasmas mas cerca de Ms PacMan
     private int getDistanciaToFantasma(Game game){
         GHOST fantasmaCercano = getFatantasmaCercano(game);
         int distancia = game.getShortestPathDistance(game.getPacmanCurrentNodeIndex(), game.getGhostCurrentNodeIndex(fantasmaCercano));
         return distancia;
     }
 
+    // Funcion para obtener el tiempo edible del fantasma mas cercano
     private int getTiempoToFantasma(Game game){
         GHOST fantasmaCercano = getFatantasmaCercano(game);
         int tiempo =  game.getGhostEdibleTime(fantasmaCercano);
         return tiempo;
     }
 
+    // Funcion para obtener la distancia a la PowerPill mas cercana de Ms PacMan
+    // Sino hay PowerPills cerca la distancia es "infinita"
     private int getDistanciaToPP(Game game){
         int distancia;
         int [] indexPP = game.getActivePowerPillsIndices();
@@ -238,6 +238,7 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
         return distancia;
     }
 
+    // Funcion para obtener el Fantasma mas cercano a Ms PacMan
     private GHOST getFatantasmaCercano(Game game){
 
         int[] distancias = new int[4];

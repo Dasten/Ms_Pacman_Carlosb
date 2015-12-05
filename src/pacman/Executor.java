@@ -503,7 +503,7 @@ public class Executor
 		}
 	}
 
-
+	// Funcion que ejecuta varias veces el juego con los controladores que se le pasan por parametro y devuelve la media de la puntiacion de todas las partidas
 	public double runGenetico(Controller<MOVE> pacManController,Controller<EnumMap<GHOST,MOVE>> ghostController,int trials)
 	{
 		double avgScore=0;

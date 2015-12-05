@@ -11,13 +11,15 @@ import java.util.Random;
 
 public class Genotipo {
 
+    // Numero de evaluaciones necesarias para obtener el fitness del individuo (cantidad de veces que un individuo ejecutara el juego)
     static int NUM_EVALUACIONES = 5;
 
-    protected float mFitness;
-    protected float mCromosoma[];
-    protected boolean evaluado;
-    protected Engine mFenotipo;
+    protected float mFitness; // Fitness del individuo
+    protected float mCromosoma[]; // Array de floats que simboliza el genotipo del individuo
+    protected boolean evaluado; // Variable para saber si un individuo ha sido evaluado o no (hemos obtenido su fitness)
 
+    // Fenotipo del individuo (de tipo Engine ya que nosotros usamos un controlador borroso (en el se encuentran todas las reglas y funciones de pertenencia)
+    protected Engine mFenotipo;
 
 
     Genotipo(){
@@ -27,6 +29,7 @@ public class Genotipo {
         mFenotipo = null;
     }
 
+    // Funcion para obtener un Genotipo de forma aleatoria para un individuo
     public void randomizeCromosoma(){
         int randoms[];
         for (int j=0; j<36; j+=4){
@@ -37,6 +40,7 @@ public class Genotipo {
         }
     }
 
+    // Funcion para obtener el genotipo correspondiente al valor de un atributo de nuestro motor de logica borroso
     private int[] getRandomCromosomaForValue(){
         Random rand = new Random();
         int[] randomValores  = new int[4];
@@ -80,12 +84,14 @@ public class Genotipo {
         this.mCromosoma = mCromosoma;
     }
 
+    // Funcion para evaluar un individuo
+    // Lo que hacemos es ejecutar el juego NUM_EVALUACIONES veces y obtenemos la puntuacion media, siendo esta el fitness del individuo
     public void evaluarGenotipo(){
         Executor exec = new Executor();
-        ControladorFuzzyGen controlador = new ControladorFuzzyGen(this);
-        mFitness = (float)exec.runGenetico(controlador, new StarterGhosts(), NUM_EVALUACIONES);
-        mFenotipo = controlador.getEngine();
-        evaluado = true;
+        ControladorFuzzyGen controlador = new ControladorFuzzyGen(this); // Creamos un controlador borroso y le pasamos nuestro individuo
+        mFitness = (float)exec.runGenetico(controlador, new StarterGhosts(), NUM_EVALUACIONES); // Ejecutamos el juego en modo experiment sin interfaz para obtener la puntuacion media
+        mFenotipo = controlador.getEngine(); // Le asignamos el fenotipo al individuo (el motor usado en el controlador borroso para su evaluacion)
+        evaluado = true; // Seteamos a true la variable para saber que este individuo ya ha sido evaluado
     }
 
     // Para mutar obtendremos un numero aleatorio de cromosomas (entre 1 y 36)
@@ -103,16 +109,9 @@ public class Genotipo {
         }
     }
 
+    // Funcion para imprimir el cromosoma por pantalla (su genotipo y fitness)
     void printCromosoma(){
-
         System.out.print(this.toString());
-
-        /*
-        for(int i = 0; i < mCromosoma.length; i++){
-            System.out.print(mCromosoma[i] + " ");
-        }
-        System.out.print("\n");
-        */
     }
 
     public String toString(){
@@ -125,10 +124,13 @@ public class Genotipo {
         return cromosoma;
     }
 
+    // Funcion para saber si el individuo ha sido evaluado o no
     public boolean isEvaluado(){
         return evaluado;
     }
 
+    // Funcion para imprimir el Fenotipo por pantalla
+    // Imprimimos tanto los puntos de las ecuaciones de la recta de cada valor para cada atributo como las reglas del motor de logica borrosa
     public void printFenotipo(){
         System.out.println("Fenotipo: ");
         System.out.println("Distancia - CERCA - (" + mCromosoma[0] + "," + mCromosoma[1] + "," + mCromosoma[2] + "," + mCromosoma[3] + ")");
@@ -149,6 +151,7 @@ public class Genotipo {
         }
     }
 
+    // Funcion que devuelve formateado en una cadena el genotipo de un individuo
     public String getGenotipoFormateado(){
         String formato = "";
         for(int i = 0; i < mCromosoma.length; i++){
