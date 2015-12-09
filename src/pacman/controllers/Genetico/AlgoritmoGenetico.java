@@ -13,7 +13,8 @@ import java.util.regex.PatternSyntaxException;
 public class AlgoritmoGenetico {
 
     static int NUM_CROMOSOMA = 36; // Numero de cromosomas que tiene el genotipo de un individuo
-    static int NUM_POBLACION = 20; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
+    static int NUM_POBLACION = 50; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
+    static float PROB_MUTE = 0.1f; // Probabilidad de que se produzca una mutacion cuando nace un hijo (10%)
     static String FICHERO = "MejorIndividuo.txt"; // Nombre del fichero donde se guarda la informacion del mejor individuo
 
     ArrayList<Genotipo> mPoblacion; // Poblacion
@@ -72,7 +73,6 @@ public class AlgoritmoGenetico {
 
         ArrayList<Genotipo> listaPadres = seleccionarIndividuos(); // Arraylist con los padres seleccionados para engendrar la nueva generacion
         ArrayList<Genotipo> nuevaGeneracion = new ArrayList<Genotipo>(); // Arraylist con los hijos, es decir, los elementos de la nueva generacion
-        float probMutacion = 0.1f; // Probabilidad de que se produzca una mutacion cuando nace un hijo (10%)
         Random rand = new Random();
 
         for(int i = 0; i < listaPadres.size(); i+= 2){
@@ -80,12 +80,12 @@ public class AlgoritmoGenetico {
             ArrayList<Genotipo> hijos = reproducir(listaPadres.get(i), listaPadres.get(i + 1)); //Creamos un hijo a partir de un Genotipo Padre y Madre
 
             // Si obtenemos un random menor que la probabilidad mutamos al hijo 1
-            if(((rand.nextInt((100-0)+1) + 0) / 100.0f) <= probMutacion){
+            if(((rand.nextInt((100-0)+1) + 0) / 100.0f) <= PROB_MUTE){
                 hijos.get(0).mutar();
             }
 
             // Si obtenemos un random menor que la probabilidad mutamos al hijo 2
-            if(((rand.nextInt((100-0)+1) + 0) / 100.0f) <= probMutacion){
+            if(((rand.nextInt((100-0)+1) + 0) / 100.0f) <= PROB_MUTE){
                 hijos.get(1).mutar();
             }
 
@@ -257,8 +257,8 @@ public class AlgoritmoGenetico {
         int numPoblacion = NUM_POBLACION;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(numPoblacion);
         int numGeneraciones = 0;
-        int numMaxGeneraciones = 10;
-        float fitnessObjetivo = 600f;
+        int numMaxGeneraciones = 30;
+        float fitnessObjetivo = 1200f;
         float currentFitness = 0f;
 
         // Menu de acciones para el usuario

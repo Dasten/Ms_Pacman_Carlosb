@@ -12,7 +12,7 @@ import java.util.Random;
 public class Genotipo {
 
     // Numero de evaluaciones necesarias para obtener el fitness del individuo (cantidad de veces que un individuo ejecutara el juego)
-    static int NUM_EVALUACIONES = 5;
+    static int NUM_EVALUACIONES = 3;
 
     protected float mFitness; // Fitness del individuo
     protected float mCromosoma[]; // Array de floats que simboliza el genotipo del individuo
