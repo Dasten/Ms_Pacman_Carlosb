@@ -29,6 +29,7 @@ public class Genotipo {
         mFenotipo = null;
     }
 
+
     // Funcion para obtener un Genotipo de forma aleatoria para un individuo
     public void randomizeCromosoma(){
         int randoms[];
@@ -39,6 +40,7 @@ public class Genotipo {
             }
         }
     }
+
 
     // Funcion para obtener el genotipo correspondiente al valor de un atributo de nuestro motor de logica borroso
     private int[] getRandomCromosomaForValue(){
@@ -84,6 +86,7 @@ public class Genotipo {
         this.mCromosoma = mCromosoma;
     }
 
+
     // Funcion para evaluar un individuo
     // Lo que hacemos es ejecutar el juego NUM_EVALUACIONES veces y obtenemos la puntuacion media, siendo esta el fitness del individuo
     public void evaluarGenotipo(){
@@ -93,6 +96,7 @@ public class Genotipo {
         mFenotipo = controlador.getEngine(); // Le asignamos el fenotipo al individuo (el motor usado en el controlador borroso para su evaluacion)
         evaluado = true; // Seteamos a true la variable para saber que este individuo ya ha sido evaluado
     }
+
 
     // Para mutar obtendremos un numero aleatorio de cromosomas (entre 1 y 36)
     // Se escogeran de forma aleatoria en el genotipo tantos cromosomas como numero hayamos obtenido
@@ -109,10 +113,12 @@ public class Genotipo {
         }
     }
 
+
     // Funcion para imprimir el cromosoma por pantalla (su genotipo y fitness)
     void printCromosoma(){
         System.out.print(this.toString());
     }
+
 
     public String toString(){
         String cromosoma = "Genotipo: ";
@@ -124,10 +130,12 @@ public class Genotipo {
         return cromosoma;
     }
 
+
     // Funcion para saber si el individuo ha sido evaluado o no
     public boolean isEvaluado(){
         return evaluado;
     }
+
 
     // Funcion para imprimir el Fenotipo por pantalla
     // Imprimimos tanto los puntos de las ecuaciones de la recta de cada valor para cada atributo como las reglas del motor de logica borrosa
@@ -150,6 +158,7 @@ public class Genotipo {
             System.out.println(regla.toString());
         }
     }
+
 
     // Funcion que devuelve formateado en una cadena el genotipo de un individuo
     public String getGenotipoFormateado(){

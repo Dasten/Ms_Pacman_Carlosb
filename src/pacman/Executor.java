@@ -468,7 +468,6 @@ public class Executor
 
 		System.out.printf("Tiempo de entrenamiento: %.2f segundos%n", tiempo);
 
-
 		System.out.printf("Ejecucion del juego en modo grafico con la QTable generada en el entrenamiento.");
 
 		game = new Game(0);

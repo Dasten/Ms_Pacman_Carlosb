@@ -1,5 +1,6 @@
 package pacman.controllers.Genetico;
 
+
 import pacman.Executor;
 import pacman.controllers.examples.StarterGhosts;
 
@@ -13,7 +14,7 @@ import java.util.regex.PatternSyntaxException;
 public class AlgoritmoGenetico {
 
     static int NUM_CROMOSOMA = 36; // Numero de cromosomas que tiene el genotipo de un individuo
-    static int NUM_POBLACION = 50; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
+    static int NUM_POBLACION = 10; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
     static float PROB_MUTE = 0.1f; // Probabilidad de que se produzca una mutacion cuando nace un hijo (10%)
     static String FICHERO = "MejorIndividuo.txt"; // Nombre del fichero donde se guarda la informacion del mejor individuo
 
@@ -29,6 +30,7 @@ public class AlgoritmoGenetico {
         }
     }
 
+
     // Funcion con la que evaluamos la generacion
     public void evaluarGeneracion() {
 
@@ -42,6 +44,7 @@ public class AlgoritmoGenetico {
         }
     }
 
+
     // Funcion para ordenar la poblacion segun su Fitness en orden ascendente
     public static void ordenarPoblacionByFitness(ArrayList<Genotipo> poblacion){
         Collections.sort(poblacion, new Comparator<Genotipo>() {
@@ -51,6 +54,7 @@ public class AlgoritmoGenetico {
 
         });
     }
+
 
     // Funcion para reemplazar la generacion, quitamos los individuos con menor fitness (peores) y metemos la nueva generacion de individuos
     public void reemplazarGeneracion(ArrayList<Genotipo> nuevaGeneracion){
@@ -65,8 +69,8 @@ public class AlgoritmoGenetico {
         for(int i = 0; i < nuevaGeneracion.size(); i++){
             mPoblacion.add(nuevaGeneracion.get(i));
         }
-
     }
+
 
     // Obtenemos una arraylist con los hijos de la nueva generacion
     public ArrayList<Genotipo> generarSiguienteGeneracion(){
@@ -121,6 +125,7 @@ public class AlgoritmoGenetico {
         return hijos;
     }
 
+
     public int getNumPoblacion(){
         return mPoblacion.size();
     }
@@ -128,6 +133,7 @@ public class AlgoritmoGenetico {
     public Genotipo getGenotipoOfIndividuo(int index){
         return mPoblacion.get(index);
     }
+
 
     // Funcion para seleccionar a los individuos de la poblacion que vamos a cruzar
     // Hacemos una seleccion por Torneo (Pag 35 de los apuntes)
@@ -159,10 +165,14 @@ public class AlgoritmoGenetico {
             }else{
                 listaPadres.add(individuo2);
             }
+
+            // Volvemos a meter todos los individuos de la poblacion en la copia para que se puedan volver a seleccionar
+            copiaPobacion = (ArrayList<Genotipo>) mPoblacion.clone();
         }
 
         return listaPadres;
     }
+
 
     public ArrayList<Genotipo> getPoblacion() {
         return mPoblacion;
@@ -172,8 +182,10 @@ public class AlgoritmoGenetico {
         this.mPoblacion = mPoblacion;
     }
 
+
     // Funcion con la que obtenemos el Fitness mas alto de la poblacion
     public float getMaxFitnessPoblacion(){
+
         // Ordenamos los individuos de la poblacion segun su fitness de menor a mayor
         AlgoritmoGenetico.ordenarPoblacionByFitness(mPoblacion);
 
@@ -202,9 +214,11 @@ public class AlgoritmoGenetico {
 
             System.out.println("Se ha guardado el mejor individuo de la poblacion en '" + FICHERO + "'");
         } catch (IOException e) {
+            System.out.println("Error al guardar el individuo en el archivo '" + FICHERO + "'");
             e.printStackTrace();
         }
     }
+
 
     // Funcion para cargar un individuo del archivo guardado en el archivo con nombre ARCHIVO (varibale cte de la clase)
     public static Genotipo cargarIndividuo() throws IOException {
@@ -215,22 +229,30 @@ public class AlgoritmoGenetico {
         String genotipoLeido = null;
         File file = new File(FICHERO);
         FileReader reader = null;
+
         try {
+
             reader = new FileReader(file);
             char[] chars = new char[(int) file.length()];
             reader.read(chars);
             genotipoLeido = new String(chars);
             reader.close();
+
         } catch (IOException e) {
-            e.printStackTrace();
+
+            System.out.println("Error al cargar el individuo del archivo.\n El archivo no existe o no se puede leer.");
+            return null;
+            //e.printStackTrace();
         } finally {
+
             if(reader !=null){reader.close();}
         }
 
         try {
             cromosoma = genotipoLeido.split("\\s+");
         } catch (PatternSyntaxException ex) {
-            System.out.println("ERROR al parsear el cromosoma cargado.");
+            System.out.println("Error al parsear el cromosoma cargado.");
+            return null;
         }
 
         for(int i = 0; i < individuoCargado.mCromosoma.length; i++){
@@ -243,6 +265,19 @@ public class AlgoritmoGenetico {
         return individuoCargado;
     }
 
+    //Funcion para obtener el fitness medio de una poblacion
+    public static float getAvgFitnessPoblacion(ArrayList<Genotipo> poblacion){
+
+        float avgFitness = 0f;
+
+        for(int i = 0; i < poblacion.size(); i++){
+            avgFitness += poblacion.get(i).getFitness();
+        }
+
+        return (avgFitness / poblacion.size());
+    }
+
+
     // Funcion para ejecutar el juego pasandole al controlador un individuo en particular
     // El juego se ejecuta de forma visual
     public static void playGameIndividuo(Genotipo individuo){
@@ -252,100 +287,130 @@ public class AlgoritmoGenetico {
         exec.runGame(controlador, new StarterGhosts(), true, delay); // Llamada al juego
     }
 
+    // Main para ejecutar el algoritmo Genetico
     public static void main(String[] args) throws IOException {
 
         int numPoblacion = NUM_POBLACION;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(numPoblacion);
         int numGeneraciones = 0;
-        int numMaxGeneraciones = 30;
+        int numMaxGeneraciones = 50;
         float fitnessObjetivo = 1200f;
-        float currentFitness = 0f;
+        float currentFitness;
+        Genotipo mejorIndividuo = null;
+        Executor exec;
+        ControladorFuzzyGen controlador;
 
         // Menu de acciones para el usuario
-        System.out.println("Que quieres hacer: (Selecciona una opcion 0/1)");
+        System.out.println("Que quieres hacer: (Selecciona una opcion 0/1/2)");
         System.out.println("0 - Ejecutar el algoritmo genetico - Pobacion: " + numPoblacion);
-        System.out.println("1 - Cargar el mejor individuo de la poblacion y lanzar el juego");
+        System.out.println("1 - Cargar el mejor individuo de la poblacion y lanzar el juego con runExperiment");
+        System.out.println("2 - Cargar el mejor individuo de la poblacion y lanzar el juego con runGameTimed");
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int opcionSeleccionada = 0;
 
-
         try {
             opcionSeleccionada = Integer.parseInt(reader.readLine());
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Opcion introducida incorrecta");
+            //e.printStackTrace();
         }
 
+        switch (opcionSeleccionada){
+            case 0:
 
-        if(opcionSeleccionada == 0) {
+                System.out.println("Iniciando el algoritmo genetico...");
+                long start_time = System.nanoTime(); // Empezamoa contar el tiempo que tarda
 
-            System.out.println("Iniciando el algoritmo genetico... (esto puede tardar mucho tiempo)");
+                while(numGeneraciones < numMaxGeneraciones){
 
-            long start_time = System.nanoTime(); // Empezamoa contar el tiempo que tarda
+                    // Evaluamos la poblacion y obtenemos el Fitness maximo de la poblacion
+                    poblacion.evaluarGeneracion();
+                    currentFitness = poblacion.getMaxFitnessPoblacion();
 
-            // Evlauamos la poblacion por primera vez antes de empezar a iterar
-            poblacion.evaluarGeneracion();
-            currentFitness = poblacion.getMaxFitnessPoblacion();
+                    //System.out.print("currentfitne: " + currentFitness);
 
-            //Condicion de parada, mientras que el fitness del mejor elemento de la poblacion no sea 600 o mayor, o si llegamos a 10 generaciones
-            while ((numGeneraciones < numMaxGeneraciones) && (currentFitness < fitnessObjetivo)) {
+                    // Comprobamos la condicion de parada
+                    if(currentFitness >= fitnessObjetivo){
+                        //Salimos del bucle ya que hemos llegado al Fitness objetivo
+                        //System.out.print("ESTAMOS SALIENDO....");
 
-                // Generamos la nueva generacion de genotipos (los hijos resultantes de los elemtnos crien)
-                //System.out.println("Generamos nueva generacion...");
-                ArrayList<Genotipo> nuevaGeneracion = poblacion.generarSiguienteGeneracion();
+                        ordenarPoblacionByFitness(poblacion.getPoblacion());
+                        mejorIndividuo = poblacion.getGenotipoOfIndividuo(numPoblacion - 1);
+                        break;
+                    }
 
-                // Ordenamos nuestra poblacion segun su Fitness
-                //System.out.println("Ordenamos la generacion segun su fitness...");
-                ordenarPoblacionByFitness(poblacion.getPoblacion());
+                    // Generamos la nueva generacion de genotipos (los hijos resultantes de los elemtnos crien)
+                    //System.out.println("Generamos nueva generacion...");
+                    ArrayList<Genotipo> nuevaGeneracion = poblacion.generarSiguienteGeneracion();
 
-                // Reemplazamos la generacionCreada (hijos) en la poblacion (quitamos los individuos con menos fitness)
-                //System.out.println("Reemplazamos generacion...");
-                poblacion.reemplazarGeneracion(nuevaGeneracion);
+                    // Ordenamos nuestra poblacion segun su Fitness
+                    //System.out.println("Ordenamos la generacion segun su fitness...");
+                    ordenarPoblacionByFitness(poblacion.getPoblacion());
 
-                //System.out.println("Evaluamos la generacion...");
-                // Volvemos a evaluar a la generacion para obtener los fitness de los hijos creados
-                poblacion.evaluarGeneracion();
+                    // Reemplazamos la generacionCreada (hijos) en la poblacion (quitamos los individuos con menos fitness)
+                    //System.out.println("Reemplazamos generacion...");
+                    poblacion.reemplazarGeneracion(nuevaGeneracion);
 
-                // Aumentamos la cantidad de generaciones creadas
-                numGeneraciones++;
+                    // Aumentamos la cantidad de generaciones creadas
+                    numGeneraciones++;
 
-                // Cambiamos el currentFitness al del mejor de la poblacion actual
-                currentFitness = poblacion.getMaxFitnessPoblacion();
+                    // Ordenamos nuestra poblacion segun su Fitness
+                    ordenarPoblacionByFitness(poblacion.getPoblacion());
 
-                // Informacion de la ejecucion del algoritmo genetico
-                System.out.println("Generacion: " + numGeneraciones + " Mejor Fitness: " + currentFitness);
-            }
+                    // Imprimimos el numero de generacion, mejor individuo de esta y el fitness medio de la poblacion
+                    System.out.println("Generacion: " + numGeneraciones);
+                    mejorIndividuo = poblacion.getGenotipoOfIndividuo(numPoblacion - 1);
+                    System.out.println("El mejor individuo de la poblacion es: ");
+                    mejorIndividuo.printCromosoma();
+                    System.out.println("Fitness medio de la poblacion " + numGeneraciones + ": " + getAvgFitnessPoblacion(poblacion.getPoblacion()) + "\n");
 
-            // Tiempo que hemos tardado en ejecutar el algoritmo genetico
-            long end_time = System.nanoTime();
-            double tiempo = (((end_time - start_time)/1e6)/1000);
-            System.out.printf("Tiempo: %.2f segundos%n", tiempo);
+                }
 
-            // El mejor individuo de la poblacion (el de mayor fitness)
-            Genotipo mejorIndividuo = poblacion.getGenotipoOfIndividuo(numPoblacion - 1);
-            System.out.println("El mejor individuo de la poblacion es: ");
-            mejorIndividuo.printCromosoma();
-            mejorIndividuo.printFenotipo();
+                // Tiempo que hemos tardado en ejecutar el algoritmo genetico
+                long end_time = System.nanoTime();
+                double tiempo = (((end_time - start_time)/1e6)/1000);
+                System.out.printf("Tiempo: %.2f segundos%n", tiempo);
 
-            // Guardamos el individuo en un fichero para recuperarlo posteriormente
-            guardarIndividuo(mejorIndividuo);
 
-            // Le preguntamos al usuario si quiere lanzar el juego con el mejor individuo de la poblacion
-            System.out.println("Quieres lanzar el juego con el mejor individuo de la poblacion? s/n");
-            String respuesta = reader.readLine();
+                // Guardamos el individuo en un fichero para recuperarlo posteriormente
+                guardarIndividuo(mejorIndividuo);
 
-            if(respuesta.equals("s")){
-                playGameIndividuo(mejorIndividuo);
-            }
+                // Imprimimos el numero de generacion donde ha acabado el algoritmo y su mejor individuo (tanto genotipo como fenotipo)
+                System.out.println("El Algoritmo Genético ha acabado en la generacion nº: " + numGeneraciones + ". El mejor individuo de la poblacion es: ");
+                mejorIndividuo.printCromosoma();
+                mejorIndividuo.printFenotipo();
 
-        }else{
+                break;
+            case 1:
 
-            // Cargamos el individuo del fichero y lanzamos el juego en modo visual
-            Genotipo mejorIndividuo = cargarIndividuo();
-            System.out.println("El mejor individuo de la poblacion es: ");
-            mejorIndividuo.printCromosoma();
-            playGameIndividuo(mejorIndividuo);
+                // Cargamos el individuo optimo almacenado
+                mejorIndividuo = cargarIndividuo();
 
+                if(mejorIndividuo != null){
+                    // Lanzamos el juego MsPacman en modo visual mediante el metodo runGameTimed, usando el individuo optimo almacenado tras la ultima ejecucion del algoritmo genetico.
+                    exec = new Executor();
+                    controlador = new ControladorFuzzyGen(mejorIndividuo);
+                    exec.runGameTimed(controlador, new StarterGhosts(), true);
+                }
+
+                break;
+            case 2:
+
+                // Cargamos el individuo optimo almacenado
+                mejorIndividuo = cargarIndividuo();
+
+                if(mejorIndividuo != null){
+                    // Lanzamos el juego MsPacman en modo visual mediante el metodo runGameTimed, usando el individuo optimo almacenado tras la ultima ejecucion del algoritmo genetico.
+                    exec = new Executor();
+                    controlador = new ControladorFuzzyGen(mejorIndividuo);
+                    exec.runGameTimed(controlador, new StarterGhosts(), true);
+                }
+
+                break;
+            default:
+                    System.out.println("Opcion introducida incorrecta");
+                break;
         }
     }
 }
