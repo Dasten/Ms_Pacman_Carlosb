@@ -14,7 +14,7 @@ import java.util.regex.PatternSyntaxException;
 public class AlgoritmoGenetico {
 
     static int NUM_CROMOSOMA = 36; // Numero de cromosomas que tiene el genotipo de un individuo
-    static int NUM_POBLACION = 10; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
+    static int NUM_POBLACION = 60; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
     static float PROB_MUTE = 0.1f; // Probabilidad de que se produzca una mutacion cuando nace un hijo (10%)
     static String FICHERO = "MejorIndividuo.txt"; // Nombre del fichero donde se guarda la informacion del mejor individuo
 
@@ -388,10 +388,11 @@ public class AlgoritmoGenetico {
                 mejorIndividuo = cargarIndividuo();
 
                 if(mejorIndividuo != null){
-                    // Lanzamos el juego MsPacman en modo visual mediante el metodo runGameTimed, usando el individuo optimo almacenado tras la ultima ejecucion del algoritmo genetico.
+                    // Lanzamos el metodo runExperiment sobre el individuo optimo almacenado tras la ultima ejecucion del algoritmo genetico, mostrando por pantalla el resultado obtenido por el individuo
                     exec = new Executor();
                     controlador = new ControladorFuzzyGen(mejorIndividuo);
-                    exec.runGameTimed(controlador, new StarterGhosts(), true);
+                    int numTrials = 10;
+                    exec.runExperiment(controlador, new StarterGhosts(), numTrials);
                 }
 
                 break;
