@@ -97,37 +97,37 @@ public class ControladorFuzzyGen extends Controller<Constants.MOVE> {
         ruleBlock.setActivation(new Minimum());
 
         // Reglas del motor borroso
-        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is POCO and DistanciaPowerPills is CERCA then Estrategia is ATACAR", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is POCO and DistanciaPowerPills is NORMAL then Estrategia is NEUTRO", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is POCO and DistanciaPowerPills is CERCA then Estrategia is HUIR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is POCO and DistanciaPowerPills is NORMAL then Estrategia is HUIR", engine));
         ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is POCO and DistanciaPowerPills is LEJOS then Estrategia is HUIR", engine));
 
-        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is NORMAL and DistanciaPowerPills is CERCA then Estrategia is ATACAR", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is NORMAL and DistanciaPowerPills is NORMAL then Estrategia is ATACAR", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is NORMAL and DistanciaPowerPills is LEJOS then Estrategia is NEUTRO", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is NORMAL and DistanciaPowerPills is CERCA then Estrategia is HUIR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is NORMAL and DistanciaPowerPills is NORMAL then Estrategia is HUIR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is NORMAL and DistanciaPowerPills is LEJOS then Estrategia is HUIR", engine));
 
         ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is MUCHO and DistanciaPowerPills is CERCA then Estrategia is ATACAR", engine));
         ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is MUCHO and DistanciaPowerPills is NORMAL then Estrategia is ATACAR", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is MUCHO and DistanciaPowerPills is LEJOS then Estrategia is ATACAR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is CERCA and Tiempo is MUCHO and DistanciaPowerPills is LEJOS then Estrategia is NEUTRO", engine));
 
-        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is POCO and DistanciaPowerPills is CERCA then Estrategia is ATACAR", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is POCO and DistanciaPowerPills is NORMAL then Estrategia is NEUTRO", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is POCO and DistanciaPowerPills is LEJOS then Estrategia is NEUTRO", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is POCO and DistanciaPowerPills is CERCA then Estrategia is HUIR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is POCO and DistanciaPowerPills is NORMAL then Estrategia is HUIR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is POCO and DistanciaPowerPills is LEJOS then Estrategia is HUIR", engine));
 
         ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is NORMAL and DistanciaPowerPills is CERCA then Estrategia is ATACAR", engine));
         ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is NORMAL and DistanciaPowerPills is NORMAL then Estrategia is NEUTRO", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is NORMAL and DistanciaPowerPills is LEJOS then Estrategia is NEUTRO", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is NORMAL and DistanciaPowerPills is LEJOS then Estrategia is HUIR", engine));
 
         ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is MUCHO and DistanciaPowerPills is CERCA then Estrategia is ATACAR", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is MUCHO and DistanciaPowerPills is NORMAL then Estrategia is ATACAR", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is MUCHO and DistanciaPowerPills is LEJOS then Estrategia is ATACAR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is MUCHO and DistanciaPowerPills is NORMAL then Estrategia is NEUTRO", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is NORMAL and Tiempo is MUCHO and DistanciaPowerPills is LEJOS then Estrategia is HUIR", engine));
 
         ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is POCO and DistanciaPowerPills is CERCA then Estrategia is NEUTRO", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is POCO and DistanciaPowerPills is NORMAL then Estrategia is HUIR", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is POCO and DistanciaPowerPills is LEJOS then Estrategia is HUIR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is POCO and DistanciaPowerPills is NORMAL then Estrategia is NEUTRO", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is POCO and DistanciaPowerPills is LEJOS then Estrategia is NEUTRO", engine));
 
         ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is NORMAL and DistanciaPowerPills is CERCA then Estrategia is NEUTRO", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is NORMAL and DistanciaPowerPills is NORMAL then Estrategia is NEUTRO", engine));
-        ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is NORMAL and DistanciaPowerPills is LEJOS then Estrategia is NEUTRO", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is NORMAL and DistanciaPowerPills is NORMAL then Estrategia is HUIR", engine));
+        ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is NORMAL and DistanciaPowerPills is LEJOS then Estrategia is HUIR", engine));
 
         ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is MUCHO and DistanciaPowerPills is CERCA then Estrategia is ATACAR", engine));
         ruleBlock.addRule(Rule.parse("if Distancia is LEJOS and Tiempo is MUCHO and DistanciaPowerPills is NORMAL then Estrategia is NEUTRO", engine));

@@ -14,8 +14,9 @@ import java.util.regex.PatternSyntaxException;
 public class AlgoritmoGenetico {
 
     static int NUM_CROMOSOMA = 36; // Numero de cromosomas que tiene el genotipo de un individuo
-    static int NUM_POBLACION = 60; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
+    static int NUM_POBLACION = 100; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
     static float PROB_MUTE = 0.1f; // Probabilidad de que se produzca una mutacion cuando nace un hijo (10%)
+    static float r = 0.4f; // Prametro r para la seleccion de individuos por "torneo"
     static String FICHERO = "MejorIndividuo.txt"; // Nombre del fichero donde se guarda la informacion del mejor individuo
 
     ArrayList<Genotipo> mPoblacion; // Poblacion
@@ -106,7 +107,6 @@ public class AlgoritmoGenetico {
     public ArrayList<Genotipo> reproducir(Genotipo padre, Genotipo madre){
 
         ArrayList<Genotipo> hijos = new ArrayList<Genotipo>();
-        float r = 0.4f;
         Genotipo hijo0 = new Genotipo(); // Hijo 1
         Genotipo hijo1 = new Genotipo(); //  Hijo 2
 
@@ -293,7 +293,7 @@ public class AlgoritmoGenetico {
         int numPoblacion = NUM_POBLACION;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(numPoblacion);
         int numGeneraciones = 0;
-        int numMaxGeneraciones = 50;
+        int numMaxGeneraciones = 30;
         float fitnessObjetivo = 1200f;
         float currentFitness;
         Genotipo mejorIndividuo = null;
