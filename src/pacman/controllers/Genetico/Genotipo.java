@@ -4,15 +4,24 @@ import com.fuzzylite.Engine;
 import com.fuzzylite.rule.Rule;
 import com.fuzzylite.rule.RuleBlock;
 import pacman.Executor;
+import pacman.controllers.Controller;
+import pacman.controllers.examples.RandomGhosts;
 import pacman.controllers.examples.StarterGhosts;
+import pacman.game.Constants.*;
+
 import java.util.Arrays;
+import java.util.EnumMap;
 import java.util.Random;
 
 
 public class Genotipo {
 
+
     // Numero de evaluaciones necesarias para obtener el fitness del individuo (cantidad de veces que un individuo ejecutara el juego)
     static int NUM_EVALUACIONES = 3;
+
+    // Controlador de los fantasmas con el que vamos a evaluar a los individuos
+    public static final Controller<EnumMap<GHOST,MOVE>> GHOST_CONTROLLER = new StarterGhosts();
 
     protected float mFitness; // Fitness del individuo
     protected float mCromosoma[]; // Array de floats que simboliza el genotipo del individuo
@@ -92,7 +101,7 @@ public class Genotipo {
     public void evaluarGenotipo(){
         Executor exec = new Executor();
         ControladorFuzzyGen controlador = new ControladorFuzzyGen(this); // Creamos un controlador borroso y le pasamos nuestro individuo
-        mFitness = (float)exec.runGenetico(controlador, new StarterGhosts(), NUM_EVALUACIONES); // Ejecutamos el juego en modo experiment sin interfaz para obtener la puntuacion media
+        mFitness = (float)exec.runGenetico(controlador, GHOST_CONTROLLER, NUM_EVALUACIONES); // Ejecutamos el juego en modo experiment sin interfaz para obtener la puntuacion media
         mFenotipo = controlador.getEngine(); // Le asignamos el fenotipo al individuo (el motor usado en el controlador borroso para su evaluacion)
         evaluado = true; // Seteamos a true la variable para saber que este individuo ya ha sido evaluado
     }

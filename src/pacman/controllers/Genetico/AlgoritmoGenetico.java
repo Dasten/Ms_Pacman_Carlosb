@@ -2,22 +2,28 @@ package pacman.controllers.Genetico;
 
 
 import pacman.Executor;
+import pacman.controllers.Controller;
+import pacman.controllers.examples.RandomGhosts;
 import pacman.controllers.examples.StarterGhosts;
+import pacman.game.Constants.*;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.PatternSyntaxException;
 
 public class AlgoritmoGenetico {
 
+
+    // Variables de configuracion
     static int NUM_CROMOSOMA = 36; // Numero de cromosomas que tiene el genotipo de un individuo
     static int NUM_POBLACION = 100; // La poblacion tiene que ser SIEMPRE DE NUMEROS PARES
     static float PROB_MUTE = 0.1f; // Probabilidad de que se produzca una mutacion cuando nace un hijo (10%)
     static float r = 0.4f; // Prametro r para la seleccion de individuos por "torneo"
     static String FICHERO = "MejorIndividuo.txt"; // Nombre del fichero donde se guarda la informacion del mejor individuo
+    public static final Controller<EnumMap<GHOST,MOVE>> GHOST_CONTROLLER = new StarterGhosts(); // Controlador para los fanstasmas que usaremos en las ejecuciones
+    public static final int NUM_MAX_GENERACIONES = 30; // Numero max de generaciones (condicion parada)
+    public static final float FITNESS_OBJETIVO = 10000f; // Numero max de fitness (condicion parada)
+
 
     ArrayList<Genotipo> mPoblacion; // Poblacion
 
@@ -284,7 +290,7 @@ public class AlgoritmoGenetico {
         Executor exec = new Executor();
         ControladorFuzzyGen controlador = new ControladorFuzzyGen(individuo); // Controlador Fuzzy al que le pasamos un individuo para establecer la reglas borrosas segun su Genotipo
         int delay = 10; // Delay o velocidad con la que se ejecutara el juego
-        exec.runGame(controlador, new StarterGhosts(), true, delay); // Llamada al juego
+        exec.runGame(controlador, GHOST_CONTROLLER, true, delay); // Llamada al juego
     }
 
     // Main para ejecutar el algoritmo Genetico
@@ -293,8 +299,6 @@ public class AlgoritmoGenetico {
         int numPoblacion = NUM_POBLACION;
         AlgoritmoGenetico poblacion = new AlgoritmoGenetico(numPoblacion);
         int numGeneraciones = 0;
-        int numMaxGeneraciones = 30;
-        float fitnessObjetivo = 1200f;
         float currentFitness;
         Genotipo mejorIndividuo = null;
         Executor exec;
@@ -322,7 +326,7 @@ public class AlgoritmoGenetico {
                 System.out.println("Iniciando el algoritmo genetico...");
                 long start_time = System.nanoTime(); // Empezamoa contar el tiempo que tarda
 
-                while(numGeneraciones < numMaxGeneraciones){
+                while(numGeneraciones < NUM_MAX_GENERACIONES){
 
                     // Evaluamos la poblacion y obtenemos el Fitness maximo de la poblacion
                     poblacion.evaluarGeneracion();
@@ -331,7 +335,7 @@ public class AlgoritmoGenetico {
                     //System.out.print("currentfitne: " + currentFitness);
 
                     // Comprobamos la condicion de parada
-                    if(currentFitness >= fitnessObjetivo){
+                    if(currentFitness >= FITNESS_OBJETIVO){
                         //Salimos del bucle ya que hemos llegado al Fitness objetivo
                         //System.out.print("ESTAMOS SALIENDO....");
 
@@ -392,7 +396,7 @@ public class AlgoritmoGenetico {
                     exec = new Executor();
                     controlador = new ControladorFuzzyGen(mejorIndividuo);
                     int numTrials = 10;
-                    exec.runExperiment(controlador, new StarterGhosts(), numTrials);
+                    exec.runExperiment(controlador, GHOST_CONTROLLER, numTrials);
                 }
 
                 break;
@@ -405,7 +409,7 @@ public class AlgoritmoGenetico {
                     // Lanzamos el juego MsPacman en modo visual mediante el metodo runGameTimed, usando el individuo optimo almacenado tras la ultima ejecucion del algoritmo genetico.
                     exec = new Executor();
                     controlador = new ControladorFuzzyGen(mejorIndividuo);
-                    exec.runGameTimed(controlador, new StarterGhosts(), true);
+                    exec.runGameTimed(controlador, GHOST_CONTROLLER, true);
                 }
 
                 break;
